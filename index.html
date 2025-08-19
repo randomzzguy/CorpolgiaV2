@@ -202,7 +202,7 @@
             line-height: 1.6;
             color: var(--text-gray);
             overflow-x: hidden;
-            background: linear-gradient(-45deg, rgba(26, 26, 46, 0.95), rgba(22, 33, 62, 0.95), rgba(15, 52, 96, 0.9), rgba(83, 61, 12, 0.95), rgba(45, 27, 105, 0.95));
+            background: linear-gradient(-45deg, rgba(26, 26, 46, 0.95), rgba(22, 33, 62, 0.95), rgba(15, 52, 96, 0.9), rgba(171, 117, 24, 0.7));
             background-size: 400% 400%;
             animation: gradientFlow 15s ease infinite;
         }
@@ -217,7 +217,7 @@
             width: 100%;
             height: 100%;
             z-index: -2;
-            background: linear-gradient(-45deg, rgba(26, 26, 46, 0.95), rgba(22, 33, 62, 0.95), rgba(15, 52, 96, 0.9), rgba(83, 61, 12, 0.95), rgba(45, 27, 105, 0.95));
+            background: linear-gradient(-45deg, rgba(26, 26, 46, 0.95), rgba(22, 33, 62, 0.95), rgba(15, 52, 96, 0.9), rgba(171, 117, 24, 0.7));
             background-size: 400% 400%;
             animation: gradientFlow 15s ease infinite;
             will-change: background-position;
@@ -243,15 +243,30 @@
             position: absolute;
             width: 4px;
             height: 4px;
-            background: rgba(255, 255, 255, 0.5);
-            border-radius: 50%;
-            animation: float 6s ease-in-out infinite;
+            border-radius: 0;
             will-change: transform;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.4);
+            pointer-events: none;
+            filter: blur(0.5px);
         }
 
-        @keyframes float {
-            0%, 100% { transform: translate3d(0, 0, 0) rotate(0deg); }
-            50% { transform: translate3d(0, -20px, 0) rotate(90deg); }
+        .particle.solid {
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .particle.hollow {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.9);
+        }
+
+        .particle-connection {
+            position: absolute;
+            background: linear-gradient(90deg, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.6));
+            height: 0.5px;
+            transform-origin: left center;
+            pointer-events: none;
+            box-shadow: 0 0 2px rgba(255, 255, 255, 0.5);
+            filter: blur(0.3px);
         }
 
         /* Main container */
@@ -392,7 +407,7 @@
                 rgba(22, 33, 62, 0.95) 25%,
                 rgba(15, 52, 96, 0.9) 50%,
                 rgba(83, 61, 12, 0.95) 75%,
-                rgba(45, 27, 105, 0.95) 100%);
+                rgba(171, 117, 24, 0.7) 100%);
             background-size: 200% 200%;
             animation: gradientShift 12s ease infinite;
             z-index: 2;
@@ -658,7 +673,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(45deg, rgba(26, 26, 46, 0.95), rgba(22, 33, 62, 0.95), rgba(15, 52, 96, 0.9), rgba(83, 61, 12, 0.95), rgba(45, 27, 105, 0.95));
+            background: linear-gradient(45deg, rgba(26, 26, 46, 0.95), rgba(22, 33, 62, 0.95), rgba(15, 52, 96, 0.9), rgba(83, 61, 12, 0.95), rgba(171, 117, 24, 0.7));
             background-size: 400% 400%;
             animation: gradientFlow 12s ease infinite;
         }
@@ -1268,6 +1283,41 @@
             border-left: 8px solid var(--dark-gold);
             border-radius: 50%;
             animation: spin 1s linear infinite;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.5), 0 0 40px rgba(212, 175, 55, 0.3);
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .loading-text {
+            color: var(--dark-gold);
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-top: 1.5rem;
+            text-align: center;
+            position: absolute;
+            bottom: 30%;
+            left: 50%;
+            transform: translateX(-50%);
+            white-space: nowrap;
+            background: linear-gradient(90deg, 
+                rgba(212, 175, 55, 0.6) 0%, 
+                rgba(255, 215, 0, 1) 25%, 
+                rgba(255, 255, 255, 1) 50%, 
+                rgba(255, 215, 0, 1) 75%, 
+                rgba(212, 175, 55, 0.6) 100%);
+            background-size: 200% 100%;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shimmer 2s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
         }
 
         /* Animation utilities - consolidated keyframes */
@@ -1407,7 +1457,7 @@
                 rgba(22, 33, 62, 0.95) 25%,
                 rgba(15, 52, 96, 0.9) 50%,
                 rgba(83, 61, 12, 0.95) 75%,
-                rgba(45, 27, 105, 0.95) 100%);
+                rgba(171, 117, 24, 0.7) 100%);
             background-size: 400% 400%;
             animation: gradientFlow 12s ease infinite;
             color: white;
@@ -1977,7 +2027,7 @@
                 rgba(22, 33, 62, 0.95) 25%,
                 rgba(15, 52, 96, 0.9) 50%,
                 rgba(83, 61, 12, 0.95) 75%,
-                rgba(45, 27, 105, 0.95) 100%);
+                rgba(171, 117, 24, 0.7) 100%);
             background-size: 400% 400%;
             animation: gradientFlow 8s ease infinite;
             color: white;
@@ -2173,6 +2223,7 @@
     <!-- Loading screen -->
     <div class="loading" id="loading">
         <div class="loader"></div>
+        <div class="loading-text">Loading Excellence...</div>
     </div>
 
     <!-- Animated background -->
@@ -3309,26 +3360,137 @@
         window.addEventListener('load', function() {
             setTimeout(() => {
                 document.getElementById('loading').classList.add('hidden');
-            }, 1000);
+            }, 2500);
         });
 
         // Custom cursor JavaScript removed
 
-        // Floating particles
-        function createParticles() {
-            const particlesContainer = document.getElementById('particles');
-            const particleCount = 50;
+        // Advanced particle system
+        class ParticleSystem {
+            constructor() {
+                this.particles = [];
+                this.connections = [];
+                this.container = document.getElementById('particles');
+                this.particleCount = 40;
+                this.connectionDistance = 120;
+                this.init();
+            }
 
-            for (let i = 0; i < particleCount; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'particle';
-                particle.style.left = Math.random() * 100 + '%';
-                particle.style.top = Math.random() * 100 + '%';
-                particle.style.animationDelay = Math.random() * 6 + 's';
-                particle.style.animationDuration = (Math.random() * 3 + 3) + 's';
-                particlesContainer.appendChild(particle);
+            init() {
+                this.createParticles();
+                this.animate();
+            }
+
+            createParticles() {
+                for (let i = 0; i < this.particleCount; i++) {
+                    const particle = {
+                        element: document.createElement('div'),
+                        x: Math.random() * window.innerWidth,
+                        y: Math.random() * window.innerHeight,
+                        vx: (Math.random() - 0.5) * 0.35,
+                        vy: (Math.random() - 0.5) * 0.35,
+                        rotation: Math.random() * 360,
+                        rotationSpeed: (Math.random() - 0.5) * 2,
+                        size: Math.random() * 3 + 2,
+                        type: Math.random() > 0.5 ? 'solid' : 'hollow'
+                    };
+
+                    particle.element.className = `particle ${particle.type}`;
+                    particle.element.style.width = particle.size + 'px';
+                    particle.element.style.height = particle.size + 'px';
+                    particle.element.style.transform = `translate(${particle.x}px, ${particle.y}px) rotate(${particle.rotation}deg)`;
+                    
+                    this.container.appendChild(particle.element);
+                    this.particles.push(particle);
+                }
+            }
+
+            updateParticles() {
+                this.particles.forEach(particle => {
+                    // Update position
+                    particle.x += particle.vx;
+                    particle.y += particle.vy;
+                    particle.rotation += particle.rotationSpeed;
+
+                    // Bounce off edges
+                    if (particle.x <= 0 || particle.x >= window.innerWidth) {
+                        particle.vx *= -1;
+                        particle.x = Math.max(0, Math.min(window.innerWidth, particle.x));
+                    }
+                    if (particle.y <= 0 || particle.y >= window.innerHeight) {
+                        particle.vy *= -1;
+                        particle.y = Math.max(0, Math.min(window.innerHeight, particle.y));
+                    }
+
+                    // Apply transform
+                    particle.element.style.transform = `translate(${particle.x}px, ${particle.y}px) rotate(${particle.rotation}deg)`;
+                });
+            }
+
+            updateConnections() {
+                // Clear existing connections
+                this.connections.forEach(connection => {
+                    if (connection.parentNode) {
+                        connection.parentNode.removeChild(connection);
+                    }
+                });
+                this.connections = [];
+
+                // Create new connections
+                for (let i = 0; i < this.particles.length; i++) {
+                    for (let j = i + 1; j < this.particles.length; j++) {
+                        const p1 = this.particles[i];
+                        const p2 = this.particles[j];
+                        const distance = Math.sqrt(
+                            Math.pow(p1.x - p2.x, 2) + Math.pow(p1.y - p2.y, 2)
+                        );
+
+                        if (distance < this.connectionDistance) {
+                            const connection = document.createElement('div');
+                            connection.className = 'particle-connection';
+                            
+                            const angle = Math.atan2(p2.y - p1.y, p2.x - p1.x) * 180 / Math.PI;
+                            const opacity = 1 - (distance / this.connectionDistance);
+                            
+                            connection.style.left = p1.x + 'px';
+                            connection.style.top = p1.y + 'px';
+                            connection.style.width = distance + 'px';
+                            connection.style.transform = `rotate(${angle}deg)`;
+                            connection.style.opacity = opacity * 0.6;
+                            
+                            this.container.appendChild(connection);
+                            this.connections.push(connection);
+                        }
+                    }
+                }
+            }
+
+            animate() {
+                this.updateParticles();
+                this.updateConnections();
+                requestAnimationFrame(() => this.animate());
+            }
+
+            resize() {
+                this.particles.forEach(particle => {
+                    particle.x = Math.min(particle.x, window.innerWidth);
+                    particle.y = Math.min(particle.y, window.innerHeight);
+                });
             }
         }
+
+        // Initialize particle system
+        let particleSystem;
+        function createParticles() {
+            particleSystem = new ParticleSystem();
+        }
+
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            if (particleSystem) {
+                particleSystem.resize();
+            }
+        });
 
         createParticles();
 
