@@ -1,0 +1,4126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Corpolgia Consulting - Excellence in Professional Services</title>
+    <style>
+        :root {
+            --primary-dark: #2e4254;
+            --primary-darker: #222222;
+            --dark-gold: #ab7518;
+            --soft-beige: #000000;
+            --soft-gray: #f8fafc;
+            --text-gray: #64748b;
+            --gradient-primary: linear-gradient(45deg, #ab7518 0%, #8b6914 25%, #6b5411 50%, #4a4a54 75%, #2e4254 100%);
+            --gradient-secondary: linear-gradient(135deg, var(--primary-dark), var(--dark-gold));
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Common transition utilities */
+        .smooth-transition {
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .fast-transition {
+            transition: all 0.3s ease;
+        }
+
+        /* Table styling utilities */
+        .training-section {
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+        }
+
+        .section-title.red {
+            color: #ff6b6b;
+        }
+
+        .section-title.teal {
+            color: #4ecdc4;
+        }
+
+        .table-container {
+            overflow-x: auto;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 2rem;
+            backdrop-filter: blur(20px);
+        }
+
+        .training-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .training-table thead tr {
+            background: rgba(255, 107, 107, 0.2);
+        }
+
+        .training-table.special thead tr {
+            background: rgba(78, 205, 196, 0.2);
+        }
+
+        .training-table th {
+            padding: 1.5rem;
+            text-align: left;
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .training-table tbody tr {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .training-table td {
+            padding: 1rem;
+        }
+
+        .training-table td:first-child {
+            color: #fff;
+        }
+
+        .training-table td:nth-child(2) {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .training-table td:last-child {
+            font-weight: 600;
+        }
+
+        .training-table:not(.special) td:last-child {
+            color: #4ecdc4;
+        }
+
+        .training-table.special td:last-child {
+            color: #ff6b6b;
+        }
+
+        /* Faculty and contact section utilities */
+        .faculty-section {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 3rem;
+            margin: 3rem 0;
+            backdrop-filter: blur(20px);
+        }
+
+        .faculty-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .faculty-card {
+            text-align: center;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+        }
+
+        .faculty-name {
+            color: #fff;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .faculty-title {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .delivery-section {
+            background: linear-gradient(135deg, var(--dark-gold), var(--primary-dark));
+            border-radius: 20px;
+            padding: 3rem;
+            margin: 3rem 0;
+            color: white;
+        }
+
+        .delivery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .delivery-item {
+            text-align: center;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-top: 5rem;
+        }
+
+        .contact-card {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            backdrop-filter: blur(20px);
+        }
+
+        .contact-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-title {
+            margin-bottom: 1rem;
+        }
+
+        .contact-title.red {
+            color: #ff6b6b;
+        }
+
+        .contact-title.teal {
+            color: #4ecdc4;
+        }
+
+        .form-select {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            color: white;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--text-gray);
+            overflow-x: hidden;
+            background: linear-gradient(-45deg, rgba(26, 26, 46, 0.95), rgba(22, 33, 62, 0.95), rgba(15, 52, 96, 0.9), rgba(83, 61, 12, 0.95), rgba(45, 27, 105, 0.95));
+            background-size: 400% 400%;
+            animation: gradientFlow 15s ease infinite;
+        }
+
+        /* Custom cursor removed */
+
+        /* Animated background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background: linear-gradient(-45deg, rgba(26, 26, 46, 0.95), rgba(22, 33, 62, 0.95), rgba(15, 52, 96, 0.9), rgba(83, 61, 12, 0.95), rgba(45, 27, 105, 0.95));
+            background-size: 400% 400%;
+            animation: gradientFlow 15s ease infinite;
+            will-change: background-position;
+        }
+
+        @keyframes gradientFlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Floating particles */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+            will-change: transform;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate3d(0, 0, 0) rotate(0deg); }
+            50% { transform: translate3d(0, -20px, 0) rotate(90deg); }
+        }
+
+        /* Main container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .header-scrolled {
+            background: rgba(0, 0, 0, 0.9) !important;
+            backdrop-filter: blur(30px);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 900;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+            overflow: hidden;
+        }
+
+
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 3rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: 600;
+            position: relative;
+            padding: 0.5rem 0;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-primary);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-links a:hover::before {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--dark-gold);
+            transform: translateY(-2px);
+        }
+
+        /* Page container */
+        .page {
+            display: none;
+            min-height: 100vh;
+            animation: pageSlide 0.8s ease-out;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes pageSlide {
+            from {
+                opacity: 0;
+                transform: translateX(100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+            opacity: 0.7;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, 
+                rgba(26, 26, 46, 0.95) 0%, 
+                rgba(22, 33, 62, 0.95) 25%,
+                rgba(15, 52, 96, 0.9) 50%,
+                rgba(83, 61, 12, 0.95) 75%,
+                rgba(45, 27, 105, 0.95) 100%);
+            background-size: 200% 200%;
+            animation: gradientShift 12s ease infinite;
+            z-index: 2;
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .hero-content {
+            z-index: 10;
+            max-width: 800px;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 6vw, 6rem);
+            font-weight: 900;
+            margin-bottom: 2rem;
+            line-height: 1.3;
+            text-transform: uppercase;
+            background: linear-gradient(45deg, #fff, var(--dark-gold), var(--primary-dark));
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: textGradient 4s ease infinite;
+        }
+
+        @keyframes textGradient {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease 0.5s both;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease 1s both;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: var(--gradient-primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            background-clip: padding-box;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .cta-secondary {
+            background: transparent;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .cta-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--dark-gold);
+        }
+
+        /* Services Preview Grid */
+        .services-preview {
+            padding: 100px 0;
+            color: white;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 4rem;
+            font-weight: 900;
+            margin-bottom: 4rem;
+            text-transform: uppercase;
+            color: white;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            width: 100px;
+            height: 4px;
+            background: var(--gradient-primary);
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        .preview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+
+        .preview-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 3rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.5s ease;
+            cursor: pointer;
+            transform: translateY(100px);
+            opacity: 0;
+        }
+
+        .preview-card.animate {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .preview-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(171, 117, 24, 0.1), transparent);
+            transform: translateX(-100%) rotate(45deg);
+            transition: transform 0.6s ease;
+        }
+
+        .preview-card:hover::before {
+            transform: translateX(100%) rotate(45deg);
+        }
+
+        .preview-card:hover {
+            transform: translateY(-20px) scale(1.02);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .preview-icon {
+            font-size: 4rem;
+            margin-bottom: 2rem;
+            display: block;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+
+        .preview-card h3 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #fff;
+            text-transform: uppercase;
+        }
+
+        .preview-card p {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+
+        .learn-more {
+            display: inline-block;
+            color: var(--dark-gold);
+            text-decoration: none;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            padding-bottom: 5px;
+        }
+
+        .learn-more::after {
+            content: '→';
+            margin-left: 10px;
+            transition: margin-left 0.3s ease;
+        }
+
+        .learn-more:hover::after {
+            margin-left: 15px;
+        }
+
+        /* About Section */
+        .about {
+            padding: 100px 0;
+            color: white;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+        }
+
+        .about-text p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .about-visual {
+            position: relative;
+            height: 400px;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .about-visual::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(26, 26, 46, 0.95), rgba(22, 33, 62, 0.95), rgba(15, 52, 96, 0.9), rgba(83, 61, 12, 0.95), rgba(45, 27, 105, 0.95));
+            background-size: 400% 400%;
+            animation: gradientFlow 12s ease infinite;
+        }
+
+        .about-visual-content {
+            position: relative;
+            z-index: 2;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            color: white;
+            text-align: center;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .stat {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--dark-gold);
+            display: block;
+        }
+
+        .stat-label {
+            text-transform: uppercase;
+            font-weight: 600;
+            opacity: 0.8;
+        }
+
+        /* Team Section */
+        .team-section {
+            margin-top: 5rem;
+            padding-top: 3rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .team-section h2 {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            text-align: center;
+            color: white;
+        }
+
+        .team-intro {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+            text-align: center;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            color: white;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .team-member {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .team-member:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--dark-gold);
+        }
+
+        .member-avatar {
+            margin-bottom: 1.5rem;
+        }
+
+        .avatar-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--dark-gold);
+            transition: all 0.3s ease;
+        }
+
+        .team-member:hover .avatar-img {
+            transform: scale(1.05);
+            border-color: white;
+        }
+
+        .member-info h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--dark-gold);
+        }
+
+        .member-info h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: white;
+            opacity: 0.9;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .member-info p {
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            color: white;
+            opacity: 0.8;
+        }
+
+        .member-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .member-tags .tag {
+            background: var(--dark-gold);
+            color: var(--primary-dark);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* What Drives Us Section */
+        .drives-us-section {
+            margin-top: 5rem;
+            padding-top: 3rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .drives-us-section h2 {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            text-align: center;
+            color: white;
+        }
+
+        .drives-intro {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+            text-align: center;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            color: white;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .value-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 2.5rem 2rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s ease;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .value-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .value-card:hover::before {
+            left: 100%;
+        }
+
+        .value-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--dark-gold);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .value-icon {
+            margin-bottom: 1.5rem;
+        }
+
+        .icon-circle {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--dark-gold), #ffd700);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .icon-circle::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #ffd700, var(--dark-gold));
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .value-card:hover .icon-circle::before {
+            opacity: 1;
+        }
+
+        .value-card:hover .icon-circle {
+            transform: rotate(360deg) scale(1.1);
+        }
+
+        .icon {
+            font-size: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .value-card h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--dark-gold);
+            transition: color 0.3s ease;
+        }
+
+        .value-card:hover h3 {
+            color: white;
+        }
+
+        .value-card p {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: white;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+
+        .value-card:hover p {
+            opacity: 1;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 100px 0;
+            text-align: center;
+            color: white;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 3rem;
+            border-radius: 20px;
+            backdrop-filter: blur(20px);
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            color: white;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--dark-gold);
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Hamburger menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: #fff;
+            margin: 3px 0;
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+
+        /* Back to top button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            text-decoration: none;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            transform: scale(1.1) rotate(360deg);
+        }
+
+        /* Consolidated Responsive Design */
+        @media (max-width: 768px) {
+            /* Navigation */
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                left: -100%;
+                height: 100vh;
+                width: 100%;
+                background: rgba(0, 0, 0, 0.95);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                transition: left 0.3s ease;
+            }
+
+            /* Services and Forms */
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .stats-section {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .services-header h2,
+            .contact-header h2 {
+                font-size: 2.5rem;
+            }
+
+            .service-item {
+                padding: 2rem;
+            }
+
+            .contact-form {
+                padding: 2rem;
+            }
+
+            /* Wizard Components */
+            .wizard-container {
+                padding: 2rem 1.5rem;
+                margin: 1rem;
+                border-radius: 20px;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .options {
+                grid-template-columns: 1fr;
+            }
+
+            .recommendation-meta {
+                grid-template-columns: 1fr;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+            }
+
+            .action-buttons .btn {
+                width: 100%;
+            }
+
+            .navigation {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            /* Footer */
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .footer-bottom-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .footer-links {
+                justify-content: center;
+            }
+            
+            .social-links {
+                justify-content: center;
+            }
+            
+            /* Additional 768px rules */
+            .hero h1 {
+                 font-size: 3rem;
+             }
+
+             .section-title {
+                 font-size: 2.5rem;
+             }
+
+             .about-content {
+                 grid-template-columns: 1fr;
+                 text-align: center;
+             }
+
+             .cta-group {
+                 flex-direction: column;
+                 align-items: center;
+             }
+
+             .preview-grid {
+                 grid-template-columns: 1fr;
+             }
+
+             .team-section h2 {
+                 font-size: 2.5rem;
+             }
+
+             .team-grid {
+                 grid-template-columns: 1fr;
+                 gap: 1.5rem;
+             }
+
+             .team-member {
+                 padding: 1.5rem;
+             }
+
+             .avatar-img {
+                 width: 100px;
+                 height: 100px;
+             }
+
+             .drives-us-section h2 {
+                 font-size: 2.5rem;
+             }
+
+             .values-grid {
+                 grid-template-columns: 1fr;
+                 gap: 1.5rem;
+             }
+
+             .value-card {
+                 padding: 2rem 1.5rem;
+             }
+
+             .icon-circle {
+                 width: 70px;
+                 height: 70px;
+             }
+
+             .icon {
+                 font-size: 1.8rem;
+             }
+         }
+
+        @media (max-width: 480px) {
+            /* Mobile-specific adjustments */
+            .stats-section {
+                grid-template-columns: 1fr;
+            }
+
+            .stat-number {
+                font-size: 2.5rem;
+            }
+
+            .wizard-container {
+                padding: 1.5rem 1rem;
+            }
+
+            .header h1 {
+                font-size: 1.8rem;
+            }
+
+            .option {
+                padding: 1rem;
+            }
+            .nav-links.active {
+                left: 0;
+            }
+        }
+        
+        /* All orphaned rules moved to proper media query blocks */
+
+        /* Loading animation */
+        .loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            transition: opacity 0.5s ease;
+        }
+
+        .loading.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .loader {
+            width: 80px;
+            height: 80px;
+            border: 8px solid rgba(255, 255, 255, 0.1);
+            border-left: 8px solid var(--dark-gold);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        /* Animation utilities - consolidated keyframes */
+
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.6s ease;
+        }
+
+        .animate-on-scroll.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Our Services Section */
+        .our-services {
+            padding: 100px 0;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            position: relative;
+        }
+
+        .services-header {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .services-header h2 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(45deg, #fff, var(--dark-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .services-header p {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            margin-bottom: 6rem;
+        }
+
+        .service-item {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 3rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.5s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-item:hover {
+            transform: translateY(-10px);
+            border-color: var(--dark-gold);
+            box-shadow: 0 20px 40px rgba(171, 117, 24, 0.3);
+        }
+
+        .service-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .service-item:hover::before {
+            left: 100%;
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .service-item h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--dark-gold);
+        }
+
+        .service-item p {
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        /* Statistics Section */
+        .stats-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+            padding: 3rem 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: var(--dark-gold);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            opacity: 0.8;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, 
+                rgba(26, 26, 46, 0.95) 0%, 
+                rgba(22, 33, 62, 0.95) 25%,
+                rgba(15, 52, 96, 0.9) 50%,
+                rgba(83, 61, 12, 0.95) 75%,
+                rgba(45, 27, 105, 0.95) 100%);
+            background-size: 400% 400%;
+            animation: gradientFlow 12s ease infinite;
+            color: white;
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .contact-header h2 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(45deg, #fff, var(--dark-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .contact-header p {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-form-wrapper {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .contact-form {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 3rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            color: white;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--dark-gold);
+            box-shadow: 0 0 20px rgba(171, 117, 24, 0.3);
+        }
+
+        .form-group select {
+            cursor: pointer;
+        }
+
+        .form-group select option {
+            background: var(--primary-dark);
+            color: white;
+        }
+
+        .form-submit {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        /* Duplicate media queries removed - consolidated above */
+
+        /* Service details pages */
+        .service-detail {
+            padding: 120px 0 80px;
+            color: white;
+            min-height: 100vh;
+        }
+
+        .service-hero {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .service-hero h1 {
+            font-size: 4rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .service-hero p {
+            font-size: 1.3rem;
+            opacity: 0.8;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+        }
+
+        .service-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 3rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.5s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(171, 117, 24, 0.1), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .service-card:hover::before {
+            left: 100%;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--dark-gold);
+            text-transform: uppercase;
+        }
+
+        .service-list {
+            list-style: none;
+        }
+
+        .service-list li {
+            padding: 0.5rem 0;
+            position: relative;
+            padding-left: 30px;
+            opacity: 0.9;
+        }
+
+        .service-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--dark-gold);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        .recommendation-tool {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* Ensure recommendation section is only visible on home page */
+        .page:not(.active) .recommendation-section {
+            display: none !important;
+        }
+        
+        /* Page Section Styles */
+        .page-section {
+            display: none;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            min-height: 100vh;
+            padding: 2rem 0;
+        }
+        
+        .page-section.active {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .page-section.fade-in {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+        
+        .page-section.fade-out {
+            animation: fadeOutDown 0.6s ease-in forwards;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translate3d(0, 30px, 0);
+            }
+            to {
+                opacity: 1;
+                transform: translate3d(0, 0, 0);
+            }
+        }
+        
+        @keyframes fadeOutDown {
+            from {
+                opacity: 1;
+                transform: translate3d(0, 0, 0);
+            }
+            to {
+                opacity: 0;
+                transform: translate3d(0, -30px, 0);
+            }
+        }
+
+        .wizard-container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 24px;
+            padding: 3rem;
+            width: 100%;
+            position: relative;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #ffffff 0%, var(--dark-gold) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .progress-bar {
+            height: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+            margin-bottom: 3rem;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--dark-gold) 0%, #fbbf24 100%);
+            width: 0%;
+            transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 3px;
+        }
+
+        .question-container {
+            display: none;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .question-container.active {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .question {
+            margin-bottom: 2.5rem;
+        }
+
+        .question h2 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .question-number {
+            color: var(--dark-gold);
+            font-size: 1rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .option {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            text-align: center;
+            backdrop-filter: blur(10px);
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+        }
+
+        .option:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--dark-gold);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+        }
+
+        .option.selected {
+            background: rgba(171, 117, 24, 0.2);
+            border-color: var(--dark-gold);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(171, 117, 24, 0.3);
+        }
+
+        .option h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: white;
+        }
+
+        .option p {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.4;
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 3rem;
+        }
+
+        .btn {
+            padding: 0.75rem 2rem;
+            border-radius: 12px;
+            border: none;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--dark-gold) 0%, #fbbf24 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(171, 117, 24, 0.4);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none !important;
+        }
+
+        .recommendation {
+            display: none;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            text-align: left;
+        }
+
+        .recommendation.active {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .recommendation-card {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 2.5rem;
+            backdrop-filter: blur(15px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+        }
+
+        .recommendation h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .recommendation .emoji {
+            font-size: 2.5rem;
+            margin-right: 0.5rem;
+        }
+
+        .recommendation-meta {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .meta-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .meta-label {
+            font-size: 0.9rem;
+            color: var(--dark-gold);
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .meta-value {
+            font-size: 1rem;
+            color: white;
+            font-weight: 500;
+        }
+
+        .description {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.9);
+            margin: 2rem 0;
+        }
+
+        .services-list {
+            margin: 2rem 0;
+        }
+
+        .services-list h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .services-list ul {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 0.75rem;
+        }
+
+        .services-list li {
+            padding: 0.75rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            border-left: 4px solid var(--dark-gold);
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2.5rem;
+            flex-wrap: wrap;
+        }
+
+        .action-buttons .btn {
+            flex: 1;
+            min-width: 180px;
+            justify-content: center;
+        }
+
+        /* Wizard media queries consolidated above */
+
+        .loading-animation {
+            display: none;
+            text-align: center;
+            padding: 3rem 0;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 3px solid rgba(255, 255, 255, 0.1);
+            border-top: 3px solid var(--dark-gold);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
+
+
+
+        .fade-enter {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .fade-enter-active {
+            opacity: 1;
+            transform: translateY(0);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        /* Footer Styles */
+        .site-footer {
+            background: linear-gradient(135deg, 
+                rgba(26, 26, 46, 0.95) 0%, 
+                rgba(22, 33, 62, 0.95) 25%,
+                rgba(15, 52, 96, 0.9) 50%,
+                rgba(83, 61, 12, 0.95) 75%,
+                rgba(45, 27, 105, 0.95) 100%);
+            background-size: 400% 400%;
+            animation: gradientFlow 8s ease infinite;
+            color: white;
+            padding: 4rem 0 2rem;
+            margin-top: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .site-footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: 1;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .footer-section h4 {
+            color: var(--dark-gold);
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-logo img {
+            height: 50px;
+            width: auto;
+        }
+        
+        .footer-logo h3 {
+            color: var(--dark-gold);
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0;
+        }
+        
+        .footer-section p {
+            opacity: 0.9;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-section ul li a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .footer-section ul li a:hover {
+            color: var(--dark-gold);
+            transform: translateX(5px);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .social-links a {
+            display: inline-block;
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+        
+        .social-links a:hover {
+            background: var(--dark-gold);
+            transform: translateY(-3px) scale(1.1);
+            box-shadow: 0 10px 20px rgba(171, 117, 24, 0.3);
+        }
+        
+        .contact-info p {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+        
+        .footer-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--dark-gold), transparent);
+            margin: 3rem 0 2rem;
+        }
+        
+        .footer-bottom {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .footer-bottom-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--dark-gold);
+        }
+        
+        /* Footer media queries consolidated above */
+        
+        /* Additional utility classes for remaining inline styles */
+        .logo img {
+            height: 60px;
+            width: auto;
+        }
+        
+        .navigation-end {
+            justify-content: flex-end;
+        }
+        
+        .delivery-title {
+            margin-bottom: 1rem;
+        }
+        
+        .contact-intro {
+            margin-bottom: 3rem;
+            opacity: 0.8;
+        }
+        
+        .contact-title-spaced {
+            margin-bottom: 2rem;
+        }
+        
+        .contact-form-wrapper {
+            text-align: left;
+        }
+        
+        .form-submit-wrapper {
+            text-align: center;
+        }
+        
+        .submit-button {
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading screen -->
+    <div class="loading" id="loading">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Animated background -->
+    <div class="bg-animation"></div>
+
+    <!-- Floating particles -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Header -->
+    <header id="header">
+        <nav class="container">
+            <div class="logo"><img src="assets/logo.svg" alt="Corpolgia"></div>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#" onclick="showPage('home')">Home</a></li>
+                        <li><a href="#" onclick="showPage('about')">About</a></li>
+                        <li><a href="#" onclick="showPage('governance')">Governance</a></li>
+                        <li><a href="#" onclick="showPage('sustainability')">Sustainability</a></li>
+                        <li><a href="#" onclick="showPage('healthcare')">Healthcare</a></li>
+                        <li><a href="#" onclick="showPage('security')">Security</a></li>
+                        <li><a href="#" onclick="showPage('contact-page')">Contact</a></li>
+            </ul>
+            <div class="hamburger" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Home Page -->
+    <div class="page active" id="home">
+        <section class="hero">
+            <video class="hero-video" autoplay muted loop>
+                <source src="assets/background.mp4" type="video/mp4">
+            </video>
+            <div class="container">
+                <div class="hero-content">
+                    <h1>Corpolgia Consulting</h1>
+                    <p class="hero-subtitle">Excellence in Governance, Sustainability, Healthcare & Security Solutions</p>
+                    <div class="cta-group">
+                        <a href="#" onclick="document.querySelector('.recommendation-section').scrollIntoView({behavior: 'smooth'})" class="cta-button cta-secondary">Find Your Solution</a>
+                        <a href="#" onclick="showPage('contact-page')" class="cta-button cta-secondary">Get In Touch</a>
+                        <a href="#" onclick="showPage('about')" class="cta-button">Discover More</a>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Our Services Section -->
+        <section class="our-services">
+            <div class="container">
+                <div class="services-header animate-on-scroll">
+                    <h2>Our Services</h2>
+                    <p>Comprehensive solutions designed to drive growth, efficiency, and success across your organization</p>
+                </div>
+                
+                <div class="services-grid">
+                    <div class="service-item animate-on-scroll">
+                        <div class="service-icon">🎯</div>
+                        <h3>Strategic Consulting</h3>
+                        <p>Expert guidance to navigate complex business challenges and unlock new opportunities for sustainable growth.</p>
+                    </div>
+                    
+                    <div class="service-item animate-on-scroll">
+                        <div class="service-icon">⚡</div>
+                        <h3>Digital Transformation</h3>
+                        <p>Modernize your operations with cutting-edge technology solutions and streamlined digital processes.</p>
+                    </div>
+                    
+                    <div class="service-item animate-on-scroll">
+                        <div class="service-icon">📈</div>
+                        <h3>Performance Optimization</h3>
+                        <p>Enhance efficiency and maximize ROI through data-driven insights and proven optimization strategies.</p>
+                    </div>
+                    
+                    <div class="service-item animate-on-scroll">
+                        <div class="service-icon">🛡️</div>
+                        <h3>Risk Management</h3>
+                        <p>Comprehensive risk assessment and mitigation frameworks to protect and secure your business assets.</p>
+                    </div>
+                    
+                    <div class="service-item animate-on-scroll">
+                        <div class="service-icon">🎓</div>
+                        <h3>Training & Development</h3>
+                        <p>Empower your team with professional development programs and industry-leading certification courses.</p>
+                    </div>
+                    
+                    <div class="service-item animate-on-scroll">
+                        <div class="service-icon">🤝</div>
+                        <h3>Partnership Solutions</h3>
+                        <p>Strategic alliances and partnership development to expand your reach and accelerate market growth.</p>
+                    </div>
+                </div>
+                
+            </section>
+
+        <section class="services-preview">
+            <div class="container">
+                <h2 class="section-title">Our Expertise</h2>
+                <div class="preview-grid">
+                    <div class="preview-card" onclick="showPage('governance')">
+                        <span class="preview-icon">🏛️</span>
+                        <h3>Governance Consulting</h3>
+                        <p>Comprehensive governance frameworks, policy development, and ISO compliance systems for organizations across all sectors.</p>
+                        <a href="#" class="learn-more" onclick="showPage('governance')">Explore Services</a>
+                    </div>
+                    
+                    <div class="preview-card" onclick="showPage('sustainability')">
+                        <span class="preview-icon">🌱</span>
+                        <h3>Sustainability Solutions</h3>
+                        <p>ESG reporting, carbon footprint measurement, and environmental compliance aligned with UAE Vision 2031.</p>
+                        <a href="#" class="learn-more" onclick="showPage('sustainability')">Explore Services</a>
+                    </div>
+                    
+                    <div class="preview-card" onclick="showPage('healthcare')">
+                        <span class="preview-icon">🏥</span>
+                        <h3>Healthcare Excellence</h3>
+                        <p>Specialized healthcare transformation, quality management, and accreditation support services.</p>
+                        <a href="#" class="learn-more" onclick="showPage('healthcare')">Explore Services</a>
+                    </div>
+                    
+                    <div class="preview-card" onclick="showPage('security')">
+                        <span class="preview-icon">🔐</span>
+                        <h3>Security & Training</h3>
+                        <p>Comprehensive security consulting and training programs in partnership with Forte Security Group.</p>
+                        <a href="#" class="learn-more" onclick="showPage('security')">Explore Services</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+                    <!-- Statistics Section -->
+                <div class="stats-section animate-on-scroll">
+                    <div class="stat-item">
+                        <div class="stat-number" data-target="150">0</div>
+                        <div class="stat-label">Projects Completed</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-target="25">0</div>
+                        <div class="stat-label">Industries Served</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-target="98">0</div>
+                        <div class="stat-label">Client Satisfaction</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-target="10">0</div>
+                        <div class="stat-label">Years Experience</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Service Recommendation Tool Section -->
+        <section class="recommendation-section">
+            <div class="container">
+                <div class="recommendation-tool">
+                    <div class="wizard-container">
+            <div class="header">
+                <h1>Find Your Perfect Solution</h1>
+                <p>Answer 3 quick questions to discover the consulting service package that's right for your organization</p>
+            </div>
+
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+
+            <!-- Question 1: Industry -->
+            <div class="question-container active" id="question1">
+                <div class="question">
+                    <span class="question-number">Question 1 of 3</span>
+                    <h2>What industry or sector does your organization operate in?</h2>
+                    <div class="options">
+                        <div class="option" data-value="government">
+                            <h3>🏛️ Government</h3>
+                            <p>Public sector agencies and departments</p>
+                        </div>
+                        <div class="option" data-value="healthcare">
+                            <h3>🏥 Healthcare</h3>
+                            <p>Medical facilities and healthcare organizations</p>
+                        </div>
+                        <div class="option" data-value="corporate">
+                            <h3>🏢 Corporate</h3>
+                            <p>Private companies and enterprises</p>
+                        </div>
+                        <div class="option" data-value="security">
+                            <h3>🔒 Security</h3>
+                            <p>Security firms and protective services</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="navigation navigation-end">
+                    <button class="btn btn-primary" id="next1" disabled>Next</button>
+                </div>
+            </div>
+
+            <!-- Question 2: Challenge -->
+            <div class="question-container" id="question2">
+                <div class="question">
+                    <span class="question-number">Question 2 of 3</span>
+                    <h2>What is your main challenge or goal?</h2>
+                    <div class="options">
+                        <div class="option" data-value="compliance">
+                            <h3>📋 Compliance</h3>
+                            <p>Meet regulatory requirements and standards</p>
+                        </div>
+                        <div class="option" data-value="sustainability">
+                            <h3>🌱 Sustainability</h3>
+                            <p>Implement ESG and sustainable practices</p>
+                        </div>
+                        <div class="option" data-value="governance">
+                            <h3>⚖️ Governance</h3>
+                            <p>Improve organizational governance and processes</p>
+                        </div>
+                        <div class="option" data-value="training">
+                            <h3>🎓 Training</h3>
+                            <p>Develop skills and capabilities</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="navigation">
+                    <button class="btn btn-secondary" id="back2">Back</button>
+                    <button class="btn btn-primary" id="next2" disabled>Next</button>
+                </div>
+            </div>
+
+            <!-- Question 3: Size -->
+            <div class="question-container" id="question3">
+                <div class="question">
+                    <span class="question-number">Question 3 of 3</span>
+                    <h2>What is your organization size?</h2>
+                    <div class="options">
+                        <div class="option" data-value="large">
+                            <h3>🏭 Large Enterprise</h3>
+                            <p>1000+ employees, multiple locations</p>
+                        </div>
+                        <div class="option" data-value="medium">
+                            <h3>🏪 Medium Business</h3>
+                            <p>100-999 employees, regional presence</p>
+                        </div>
+                        <div class="option" data-value="small">
+                            <h3>🏬 Small Organization</h3>
+                            <p>Under 100 employees, local focus</p>
+                        </div>
+                        <div class="option" data-value="govt-entity">
+                            <h3>🏛️ Government Entity</h3>
+                            <p>Any size public sector organization</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="navigation">
+                    <button class="btn btn-secondary" id="back3">Back</button>
+                    <button class="btn btn-primary" id="getRecommendation" disabled>Get My Recommendation</button>
+                </div>
+            </div>
+
+            <!-- Loading Animation -->
+            <div class="loading-animation" id="loading">
+                <div class="spinner"></div>
+                <h2>Analyzing Your Needs...</h2>
+                <p>Creating your personalized recommendation</p>
+            </div>
+
+            <!-- Recommendation -->
+            <div class="recommendation" id="recommendation">
+                <div class="recommendation-card">
+                    <h2 id="recTitle"></h2>
+                    <div class="recommendation-meta" id="recMeta"></div>
+                    <div class="description" id="recDescription"></div>
+                    <div class="services-list">
+                        <h3>Key Services Included:</h3>
+                        <ul id="recServices"></ul>
+                    </div>
+                    <div class="action-buttons">
+                        <button class="btn btn-primary" id="startProject">🚀 Start Your Project</button>
+                        <button class="btn btn-secondary" id="tryAgain">🔄 Try Again</button>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </section>
+        
+    </div>
+    
+    <!-- Contact Form Section -->
+        <div class="page-section" id="contact-page">
+            <section class="contact-section">
+            <div class="container">
+                <div class="contact-header animate-on-scroll">
+                    <h2>Get Started Today</h2>
+                    <p>Ready to transform your business? Contact our experts for a personalized consultation</p>
+                </div>
+                
+                <div class="contact-form-wrapper animate-on-scroll">
+                    <form class="contact-form" id="contactForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <input type="text" id="firstName" name="firstName" placeholder="First Name" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" id="lastName" name="lastName" placeholder="Last Name" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <input type="email" id="email" name="email" placeholder="Email Address" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="tel" id="phone" name="phone" placeholder="Phone Number" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <input type="text" id="company" name="company" placeholder="Company Name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <select id="service" name="service" required>
+                                <option value="">Select Service Interest</option>
+                                <option value="governance">Governance Consulting</option>
+                                <option value="sustainability">Sustainability Solutions</option>
+                                <option value="healthcare">Healthcare Excellence</option>
+                                <option value="security">Security & Training</option>
+                                <option value="strategic">Strategic Consulting</option>
+                                <option value="digital">Digital Transformation</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <textarea id="message" name="message" rows="4" placeholder="Tell us about your project requirements" required></textarea>
+                        </div>
+                        
+                        <div class="form-submit">
+                            <button type="submit" class="cta-button">Send Message</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            </section>
+        </div>
+        
+
+    </div>
+    </div>
+    <!-- About Page -->
+    <div class="page" id="about">
+        <section class="about">
+            <div class="container">
+                <div class="about-content">
+                    <div class="about-text animate-on-scroll">
+                        <h2>About Corpolgia</h2>
+                        <p>Corpolgia Consulting is a vital division within La Stella Group, a conglomerate with international subsidiaries housing corporate experts, analysts, engineers, professors, and strategists.</p>
+                        <p>We are dedicated to utilizing our extensive network experience and knowledge to enhance clients' success in both private and public sectors across the UAE and beyond.</p>
+                        <p><strong>Part of La Stella Group Family:</strong> La Stella Training, La Stella Italy, La Stella Gulf (SA), and Corpolgia Consulting.</p>
+                    </div>
+                    <div class="about-visual animate-on-scroll">
+                        <div class="about-visual-content">
+                            <h3>🌟 La Stella Group</h3>
+                            <p>International Excellence<br>Expert Network<br>Proven Results</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="stats">
+                    <div class="stat animate-on-scroll">
+                        <span class="stat-number" data-target="100">0</span>
+                        <span class="stat-label">Projects Completed</span>
+                    </div>
+                    <div class="stat animate-on-scroll">
+                        <span class="stat-number" data-target="50">0</span>
+                        <span class="stat-label">Expert Consultants</span>
+                    </div>
+                    <div class="stat animate-on-scroll">
+                        <span class="stat-number" data-target="15">0</span>
+                        <span class="stat-label">Years Experience</span>
+                    </div>
+                    <div class="stat animate-on-scroll">
+                        <span class="stat-number" data-target="4">0</span>
+                        <span class="stat-label">Service Areas</span>
+                    </div>
+                </div>
+                
+                <!-- Team Section -->
+                <div class="team-section animate-on-scroll">
+                    <h2>Leadership Team</h2>
+                    <p class="team-intro">Meet our distinguished team of experts who bring decades of combined experience in governance, compliance, and organizational excellence to drive your success.</p>
+                    
+                    <div class="team-grid">
+                        <div class="team-member animate-on-scroll">
+                            <div class="member-avatar">
+                                <img src="assets/team1.png" alt="Eng. Rashed Alhebsi" class="avatar-img">
+                            </div>
+                            <div class="member-info">
+                                <h3>Eng. Rashed Alhebsi</h3>
+                                <h4>Head of Governance</h4>
+                                <p>Leading strategic vision and operational excellence with over 15 years of engineering and governance expertise in the UAE market.</p>
+                                <div class="member-tags">
+                                    <span class="tag">Engineering</span>
+                                    <span class="tag">Governance</span>
+                                    <span class="tag">Strategy</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="team-member animate-on-scroll">
+                            <div class="member-avatar">
+                                <img src="assets/team2.png" alt="Dr. Effat Mostafa" class="avatar-img">
+                            </div>
+                            <div class="member-info">
+                                <h3>Dr. Effat Mostafa</h3>
+                                <h4>Business Excellence Expert</h4>
+                                <p>Driving innovation in compliance technology and digital transformation solutions across diverse industries and sectors.</p>
+                                <div class="member-tags">
+                                    <span class="tag">Excellence</span>
+                                    <span class="tag">Innovation</span>
+                                    <span class="tag">Digital Transformation</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="team-member animate-on-scroll">
+                            <div class="member-avatar">
+                                <img src="assets/team3.png" alt="Dr. Giovanni Lombardo" class="avatar-img">
+                            </div>
+                            <div class="member-info">
+                                <h3>Dr. Giovanni Lombardo</h3>
+                                <h4>Head of Social RoI</h4>
+                                <p>Specializing in international compliance frameworks and strategic business development with focus on social impact measurement.</p>
+                                <div class="member-tags">
+                                    <span class="tag">Social Impact</span>
+                                    <span class="tag">Compliance</span>
+                                    <span class="tag">International</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="team-member animate-on-scroll">
+                            <div class="member-avatar">
+                                <img src="assets/team4.png" alt="Eng. Omar Alshehi" class="avatar-img">
+                            </div>
+                            <div class="member-info">
+                                <h3>Eng. Omar Alshehi</h3>
+                                <h4>Head of Security Consulting & Training</h4>
+                                <p>Expert in cybersecurity frameworks and comprehensive security training programs for government and private sector organizations.</p>
+                                <div class="member-tags">
+                                    <span class="tag">Cybersecurity</span>
+                                    <span class="tag">Training</span>
+                                    <span class="tag">Consulting</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="team-member animate-on-scroll">
+                            <div class="member-avatar">
+                                <img src="assets/team5.png" alt="Giovanna Melfi" class="avatar-img">
+                            </div>
+                            <div class="member-info">
+                                <h3>Giovanna Melfi</h3>
+                                <h4>Head of Transformation</h4>
+                                <p>Leading organizational transformation initiatives and change management strategies for sustainable business growth and innovation.</p>
+                                <div class="member-tags">
+                                    <span class="tag">Transformation</span>
+                                    <span class="tag">Change Management</span>
+                                    <span class="tag">Innovation</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="team-member animate-on-scroll">
+                            <div class="member-avatar">
+                                <img src="assets/team1.png" alt="Peter Barlow" class="avatar-img">
+                            </div>
+                            <div class="member-info">
+                                <h3>Peter Barlow</h3>
+                                <h4>Governance Expert</h4>
+                                <p>Specializing in international compliance frameworks and strategic business development with extensive global experience.</p>
+                                <div class="member-tags">
+                                    <span class="tag">Governance</span>
+                                    <span class="tag">Strategy</span>
+                                    <span class="tag">Global Experience</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- What Drives Us Section -->
+                <div class="drives-us-section animate-on-scroll">
+                    <h2>What Drives Us</h2>
+                    <p class="drives-intro">Our commitment to excellence is built on five core pillars that define our approach to consulting and drive measurable results for our clients.</p>
+                    
+                    <div class="values-grid">
+                        <div class="value-card animate-on-scroll">
+                            <div class="value-icon">
+                                <div class="icon-circle">
+                                    <span class="icon">🌍</span>
+                                </div>
+                            </div>
+                            <h3>Global Expertise</h3>
+                            <p>International network of corporate experts and strategists spanning multiple continents</p>
+                        </div>
+                        
+                        <div class="value-card animate-on-scroll">
+                            <div class="value-icon">
+                                <div class="icon-circle">
+                                    <span class="icon">🎯</span>
+                                </div>
+                            </div>
+                            <h3>Comprehensive Solutions</h3>
+                            <p>Multi-sector consulting across governance, sustainability, and security domains</p>
+                        </div>
+                        
+                        <div class="value-card animate-on-scroll">
+                            <div class="value-icon">
+                                <div class="icon-circle">
+                                    <span class="icon">🤝</span>
+                                </div>
+                            </div>
+                            <h3>Strategic Partnership</h3>
+                            <p>Collaboration with leading organizations like Forte Security Group</p>
+                        </div>
+                        
+                        <div class="value-card animate-on-scroll">
+                            <div class="value-icon">
+                                <div class="icon-circle">
+                                    <span class="icon">⚡</span>
+                                </div>
+                            </div>
+                            <h3>Innovation Excellence</h3>
+                            <p>Cutting-edge methodologies and international best practices</p>
+                        </div>
+                        
+                        <div class="value-card animate-on-scroll">
+                            <div class="value-icon">
+                                <div class="icon-circle">
+                                    <span class="icon">📊</span>
+                                </div>
+                            </div>
+                            <h3>Measurable Impact</h3>
+                            <p>Results-driven approach with quantifiable outcomes and ROI tracking</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Governance Page -->
+    <div class="page" id="governance">
+        <section class="service-detail">
+            <div class="container">
+                <div class="service-hero">
+                    <h1>🏛️ Governance Consulting</h1>
+                    <p>Premier provider of comprehensive governance frameworks and compliance solutions</p>
+                </div>
+                
+                <div class="service-grid">
+                    <div class="service-card animate-on-scroll">
+                        <h3>✅ Corporate Governance Frameworks</h3>
+                        <ul class="service-list">
+                            <li>Board governance charters and executive authority matrices</li>
+                            <li>Governance models for family businesses, SOEs, and semi-government entities</li>
+                            <li>Committee establishment (Audit, Risk, Ethics, Sustainability)</li>
+                            <li>Governance secretariats setup</li>
+                        </ul>
+                    </div>
+
+                    <div class="service-card animate-on-scroll">
+                        <h3>🧭 Policy & SOP Development</h3>
+                        <ul class="service-list">
+                            <li>End-to-end development or restructuring of internal policies and procedures</li>
+                            <li>Policy landscape mapping and governance gap analysis</li>
+                            <li>Modular SOP development aligned with ISO standards</li>
+                            <li>Function-specific policy manuals (HR, Finance, Risk, Procurement, IT)</li>
+                        </ul>
+                    </div>
+
+                    <div class="service-card animate-on-scroll">
+                        <h3>🏢 Government Entity Governance</h3>
+                        <ul class="service-list">
+                            <li>Organizational governance models for ministries and authorities</li>
+                            <li>Regulatory governance frameworks and compliance mechanisms</li>
+                            <li>Bylaws, resolutions, and legal operating mandates</li>
+                            <li>Alignment with UAE federal and emirate-level directives (GSEC, MOF, ADGM)</li>
+                        </ul>
+                    </div>
+
+                    <div class="service-card animate-on-scroll">
+                        <h3>🧩 ISO Governance Systems</h3>
+                        <ul class="service-list">
+                            <li>ISO 37301: Compliance Management Systems</li>
+                            <li>ISO 37000: Governance of Organizations</li>
+                            <li>ISO 37001: Anti-Bribery Management Systems</li>
+                            <li>ISO 22301: Business Continuity Management</li>
+                            <li>ISO 42001: AI Governance</li>
+                            <li>Gap analysis and pre-certification readiness support</li>
+                        </ul>
+                    </div>
+
+                    <div class="service-card animate-on-scroll">
+                        <h3>📊 Board & Executive Effectiveness</h3>
+                        <ul class="service-list">
+                            <li>Board evaluation frameworks and maturity models</li>
+                            <li>Performance scorecards and board dashboards</li>
+                            <li>Board composition and succession planning advisory</li>
+                            <li>Executive profiling and ethics/integrity advisory</li>
+                        </ul>
+                    </div>
+
+                    <div class="service-card animate-on-scroll">
+                        <h3>🛡️ Risk Management & AML Frameworks</h3>
+                        <ul class="service-list">
+                            <li>Enterprise Risk Management (ERM) based on ISO 31000</li>
+                            <li>Risk registers, control matrices, and escalation workflows</li>
+                            <li>AML frameworks aligned with UAE Cabinet Decision No. (10) of 2019</li>
+                            <li>FATF guidelines compliance and sector-specific AML/CFT requirements</li>
+                            <li>KYC/EDD procedures and STR/SAR reporting protocols</li>
+                            <li>AML Governance Committees and regulatory inspection readiness</li>
+                        </ul>
+                    </div>
+
+                    <div class="service-card animate-on-scroll">
+                        <h3>🧠 AI & Data Governance</h3>
+                        <ul class="service-list">
+                            <li>AI Governance Framework aligned with ISO 42001 and UAE AI Ethics Guidelines</li>
+                            <li>Data classification policies, access controls, and handling protocols</li>
+                            <li>Data Governance Committees and stewardship roles establishment</li>
+                            <li>Digital transformation and automation adoption governance support</li>
+                        </ul>
+                    </div>
+
+                    <div class="service-card animate-on-scroll">
+                        <h3>🎓 Governance Training & Capacity Building</h3>
+                        <ul class="service-list">
+                            <li>Board governance and fiduciary duties certification</li>
+                            <li>Corporate secretary functions training</li>
+                            <li>Policy writing and regulatory compliance programs</li>
+                            <li>Risk-based decision making workshops</li>
+                            <li>Customized academies for board members and compliance officers</li>
+                        </ul>
+                    </div>
+
+                    <div class="service-card animate-on-scroll">
+                        <h3>📚 Governance Audits & Maturity Assessments</h3>
+                        <ul class="service-list">
+                            <li>Governance maturity modeling (COSO, OECD, ISO 37000)</li>
+                            <li>Independent governance audits and board review exercises</li>
+                            <li>Benchmarking against global and local best practices (ADX, SCA, World Bank)</li>
+                            <li>Improvement action plans with measurable KPIs</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Sustainability Page -->
+    <div class="page" id="sustainability">
+        <section class="service-detail">
+            <div class="container">
+                <div class="service-hero">
+                    <h1>🌱 Sustainability Solutions</h1>
+                    <p>Comprehensive sustainability consulting aligned with UAE Vision 2031 and international standards</p>
+                </div>
+                
+                <div class="service-grid">
+                    <div class="service-card animate-on-scroll">
+                        <h3>🌱 Sustainability Strategy Development</h3>
+                        <ul class="service-list">
+                            <li>Corporate sustainability frameworks aligned with UAE Vision 2031 and SDGs</li>
+                            <li>ESG integration into core business strategies</li>
+                            <li>Decarbonization roadmaps and Net Zero strategies</li>
+                            <li>Internal sustainability governance structures and charters</li>
+                        </ul>
+                    </div>
+
+                    <div class="service-card animate-on-scroll">
+                        <h3>♻️ Environmental Compliance & Regulatory Advisory</h3>
+                        <ul class="service-list">
+                            <li>Federal Decree-Law No. 11 of 2024 compliance (GHG MRV and carbon registry)</li>
+                            <li>Cabinet Resolution No. 67 of 2024 (UAE Carbon Credit Market)</li>
+                            <li>Federal Decree-Law No. 12 of 2023 (environmental diligence in PPPs)</li>
+                            <li>Permitting and EIA support with MOCCAE and EAD guidelines</li>
+                        </ul>
+                    </div>
+
+                    <div class="service-card animate-on-scroll">
+                        <h3>📊 ESG Reporting & Assurance</h3>
+                        <ul class="service-list">
+                            <li>ESG reports aligned with GRI, SASB, TCFD, and CDP frameworks</li>
+                            <li>Third-party ESG assurance and materiality assessments</li>
+                            <li>KPIs and dashboards development for ESG tracking</li>
+                            <li>Stakeholder engagement and sustainability communications</li>
+                        </ul>
+                    </div>
+
+                    <div class="service-card animate-on-scroll">
+                        <h3>🌍 Carbon Footprint Measurement & GHG Inventory</h3>
+                        <ul class="service-list">
+                            <li>GHG emissions quantification (Scope 1, 2, and 3) per ISO 14064-1:2018</li>
+                            <li>Carbon footprint of products and services (PCF/LCA studies)</li>
+                            <li>GHG reduction plans and carbon offset strategy development</li>
+                            <li>Carbon accounting systems and verification support</li>
+                        </ul>
+                    </div>
+
+                    <div class="service-card animate-on-scroll">
+                        <h3>🏭 Energy Management & Resource Efficiency</h3>
+                        <ul class="service-list">
+                            <li>ISO 50001:2018 Energy Management System implementation</li>
+                            <li>Energy audits and benchmarking for industrial and commercial facilities</li>
+                            <li>Energy conservation programs and performance monitoring tools</li>
+                            <li>Renewable energy integration strategies</li>
+                        </ul>
+                    </div>
+
+                    <div class="service-card animate-on-scroll">
+                        <h3>🧩 Circular Economy & Waste Management</h3>
+                        <ul class="service-list">
+                            <li>Circular economy strategies for industrial zones and municipalities</li>
+                            <li>Waste stream analysis, diversion plans, and valorization strategies</li>
+                            <li>Sustainable procurement and product stewardship systems (ISO 20400)</li>
+                            <li>Zero waste to landfill programs</li>
+                        </ul>
+                    </div>
+
+                    <div class="service-card animate-on-scroll">
+                        <h3>🔒 Sustainability Risk Management</h3>
+                        <ul class="service-list">
+                            <li>Climate-related risk assessment using ISO 14091 and TCFD principles</li>
+                            <li>Business continuity planning under climate disruption scenarios</li>
+                            <li>Sustainability-linked risk mapping for investment decision-making</li>
+                            <li>Supply chain sustainability risk assessment</li>
+                        </ul>
+                    </div>
+
+                    <div class="service-card animate-on-scroll">
+                        <h3>🔬 Data, Digitalization & Sustainability Technology</h3>
+                        <ul class="service-list">
+                            <li>Sustainability data platforms and dashboards implementation</li>
+                            <li>SAP Environment, Health, and Safety (EHS) modules integration</li>
+                            <li>Smart monitoring of emissions, energy, and resource use</li>
+                            <li>IoT and AI solutions for sustainability optimization</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Healthcare Page -->
+    <div class="page" id="healthcare">
+        <section class="service-detail">
+            <div class="container">
+                <div class="service-hero">
+                    <h1>🏥 Healthcare Excellence</h1>
+                    <p>Specialized healthcare consulting aligned with UAE healthcare vision and global standards</p>
+                </div>
+                
+                <div class="service-grid">
+                    <div class="service-card animate-on-scroll">
+                        <h3>🔒 Business Continuity & Emergency Preparedness</h3>
+                        <ul class="service-list">
+                            <li>ISO 22301:2019 and NCEMA 7000:2021 compliant BCMS design and implementation</li>
+                            <li>Abu Dhabi DoH Circulars & Risk Readiness Frameworks alignment</li>
+                            <li>Risk registers, business impact analysis, continuity & recovery plans</li>
+                            <li>Pandemic preparedness and health emergency protocols</li>
+                            <li>Simulation drills and real-time response testing aligned with DoH standards</li>
+                        </ul>
+                    </div>
+
+                    <div class="service-card animate-on-scroll">
+                        <h3>🎯 Healthcare Strategy & Policy Development</h3>
+                        <ul class="service-list">
+                            <li>National and regional healthcare transformation strategies advisory</li>
+                            <li>Preventive care policies and models development</li>
+                            <li>Mental health and neurodiversity framework design</li>
+                            <li>Chronic disease management programs</li>
+                            <li>Elderly care and long-term care models</li>
+                            <li>Alignment with UAE health visions and WHO/OECD benchmarks</li>
+                        </ul>
+                    </div>
+
+                    <div class="service-card animate-on-scroll">
+                        <h3>✅ Regulatory Compliance & Accreditation Support</h3>
+                        <ul class="service-list">
+                            <li>JCI, CBAHI, ISO 15189, ISO 13485 end-to-end support</li>
+                            <li>DoH/MOHAP licensing requirements compliance</li>
+                            <li>Internal audit, documentation, and readiness assessment</li>
+                            <li>Compliance framework design for private and public healthcare facilities</li>
+                        </ul>
+                    </div>
+
+                    <div class="service-card animate-on-scroll">
+                        <h3>📈 Healthcare Quality & Performance Management</h3>
+                        <ul class="service-list">
+                            <li>Hospital-wide quality programs, KPIs, and dashboards development</li>
+                            <li>Lean Healthcare principles and Six Sigma practices implementation</li>
+                            <li>Patient experience enhancement and service redesign</li>
+                            <li>Internal audit and root cause analysis systems for continuous improvement</li>
+                        </ul>
+                    </div>
+
+                    <div class="service-card animate-on-scroll">
+                        <h3>💼 Institutional Risk Management</h3>
+                        <ul class="service-list">
+                            <li>Integrated risk management systems aligned with DoH and ISO 31000</li>
+                            <li>Risk registers, scoring models, and escalation protocols</li>
+                            <li>Simulation-based risk scenario testing and mitigation planning</li>
+                            <li>Healthcare-specific risk assessment frameworks</li>
+                        </ul>
+                    </div>
+
+                    <div class="service-card animate-on-scroll">
+                        <h3>💰 Financial Advisory & Revenue Cycle Optimization</h3>
+                        <ul class="service-list">
+                            <li>Revenue leakage analysis and billing process optimization</li>
+                            <li>DRG readiness assessments and clinical coding audits</li>
+                            <li>Pricing models, capitation frameworks, and insurance alignment support</li>
+                            <li>Healthcare economics and value-based care models</li>
+                        </ul>
+                    </div>
+
+                    <div class="service-card animate-on-scroll">
+                        <h3>🎓 Healthcare Training & Capacity Building</h3>
+                        <ul class="service-list">
+                            <li>Healthcare quality, patient safety, and clinical governance certification</li>
+                            <li>Institutional risk & crisis management training</li>
+                            <li>Business continuity in healthcare specialized programs</li>
+                            <li>Obesity prevention and management upskilling</li>
+                            <li>Congenital abnormalities and neurodiversity in clinical settings</li>
+                            <li>Non-communicable disease (NCD) control strategies</li>
+                        </ul>
+                    </div>
+
+                    <div class="service-card animate-on-scroll">
+                        <h3>🌿 Healthcare Sustainability & Green Transformation</h3>
+                        <ul class="service-list">
+                            <li>Sustainability frameworks design and implementation for hospitals</li>
+                            <li>Environmental compliance (ISO 14001) and energy efficiency (ISO 50001)</li>
+                            <li>Sustainable procurement (ISO 20400) and medical waste minimization</li>
+                            <li>UAE Green Hospitals and MOCCAE-aligned initiatives support</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Security Page -->
+    <div class="page" id="security">
+        <section class="service-detail">
+            <div class="container">
+                <div class="service-hero">
+                    <h1>🔐 Security & Training Excellence</h1>
+                    <p>Comprehensive security solutions in partnership with Forte Security Group</p>
+                </div>
+
+                <!-- Training Programs Tables -->
+                <div class="training-section">
+                    <h3 class="section-title red">Core Training Programs</h3>
+                    <div class="table-container">
+                        <table class="training-table">
+                            <thead>
+                                <tr>
+                                    <th>Course Title</th>
+                                    <th>Target Sectors</th>
+                                    <th>Duration</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Aviation Security</td>
+                                    <td>Airports, Airlines, Ground Staff</td>
+                                    <td>5 days</td>
+                                </tr>
+                                <tr>
+                                    <td>Transport Security</td>
+                                    <td>Rail, Public Transport, Freight</td>
+                                    <td>5 days</td>
+                                </tr>
+                                <tr>
+                                    <td>Logistics Security</td>
+                                    <td>Warehousing, Ports, Distribution</td>
+                                    <td>5 days</td>
+                                </tr>
+                                <tr>
+                                    <td>Retail & Luxury Facility Security</td>
+                                    <td>Malls, Hotels, Hospitals</td>
+                                    <td>5 days</td>
+                                </tr>
+                                <tr>
+                                    <td>Events & Museum Security</td>
+                                    <td>Cultural Venues, Expo Sites</td>
+                                    <td>5 days</td>
+                                </tr>
+                                <tr>
+                                    <td>Travel Security</td>
+                                    <td>Executives, Diplomats, Journalists</td>
+                                    <td>5 days</td>
+                                </tr>
+                                <tr>
+                                    <td>Security Manager Certification</td>
+                                    <td>Senior Security Leaders</td>
+                                    <td>4 weeks / 5 days intensive</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="training-section">
+                    <h3 class="section-title teal">Special Training Programs</h3>
+                    <div class="table-container">
+                        <table class="training-table special">
+                            <thead>
+                                <tr>
+                                    <th>Course Title</th>
+                                    <th>Focus</th>
+                                    <th>Duration</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>U.S.T. - Unconventional Security Training</td>
+                                    <td>Cognitive resilience, behavioral security</td>
+                                    <td>5 days</td>
+                                </tr>
+                                <tr>
+                                    <td>Women in Security</td>
+                                    <td>Female personnel in public/private sectors</td>
+                                    <td>5 days</td>
+                                </tr>
+                                <tr>
+                                    <td>SOC Operators Training</td>
+                                    <td>Control Room, Surveillance, Alarm Management</td>
+                                    <td>2 days</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <div class="service-grid">
+                    <div class="service-card animate-on-scroll">
+                        <h3>🔐 Security Governance & Risk Management</h3>
+                        <ul class="service-list">
+                            <li>Development of security frameworks and ESRM</li>
+                            <li>Comprehensive threat assessments and vulnerability analysis</li>
+                            <li>Security policy development and implementation</li>
+                            <li>Risk-based security planning and resource allocation</li>
+                        </ul>
+                    </div>
+
+                    <div class="service-card animate-on-scroll">
+                        <h3>✅ Regulatory Compliance</h3>
+                        <ul class="service-list">
+                            <li>SIRA compliance advisory and audit support</li>
+                            <li>MCC standards alignment and implementation</li>
+                            <li>DoH security requirements for healthcare facilities</li>
+                            <li>ADNOC standards compliance for energy sector</li>
+                        </ul>
+                    </div>
+
+                    <div class="service-card animate-on-scroll">
+                        <h3>🏢 Critical Infrastructure Protection</h3>
+                        <ul class="service-list">
+                            <li>Security masterplans for ports, hospitals, and industrial zones</li>
+                            <li>Infrastructure vulnerability assessments and gap analysis</li>
+                            <li>Physical security design and implementation</li>
+                            <li>Perimeter security and access control systems</li>
+                        </ul>
+                    </div>
+
+                    <div class="service-card animate-on-scroll">
+                        <h3>🖥️ Data Center Security (NIST2-Aligned)</h3>
+                        <ul class="service-list">
+                            <li>Physical security: Access control, CCTV, biometric authentication</li>
+                            <li>Environmental controls: Temperature, humidity, fire suppression systems</li>
+                            <li>Power continuity: Redundant power infrastructure (UPS, generators)</li>
+                            <li>Network security: Intrusion detection/prevention, firewall systems</li>
+                            <li>NIST SP 800-171 (NIST2) compliance for CUI protection</li>
+                            <li>Incident response planning and disaster recovery protocols</li>
+                            <li>Vendor risk management and security awareness training</li>
+                        </ul>
+                    </div>
+
+                    <div class="service-card animate-on-scroll">
+                        <h3>🧠 Smart Surveillance & SOC Planning</h3>
+                        <ul class="service-list">
+                            <li>Command-and-control centers design and implementation</li>
+                            <li>CCTV systems and AI-enabled analytics integration</li>
+                            <li>Security Operations Center (SOC) planning and setup</li>
+                            <li>Integrated security management systems deployment</li>
+                        </ul>
+                    </div>
+
+                    <div class="service-card animate-on-scroll">
+                        <h3>🛡️ Business Continuity & Crisis Management</h3>
+                        <ul class="service-list">
+                            <li>Security-focused BCP aligned with ISO 22301 & NCEMA 7000</li>
+                            <li>Crisis management protocols and emergency response planning</li>
+                            <li>Business impact analysis for security incidents</li>
+                            <li>Continuity testing and drill coordination</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Faculty Section -->
+                <div class="faculty-section">
+                    <h3 class="section-title red">🧠 Expert Faculty</h3>
+                    <div class="faculty-grid">
+                        <div class="faculty-card">
+                            <strong class="faculty-name">Salvatore Forte</strong><br>
+                            <span class="faculty-title">Founder, Forte Security Group (Italy)</span>
+                        </div>
+                        <div class="faculty-card">
+                            <strong class="faculty-name">Michele Farinetti</strong><br>
+                            <span class="faculty-title">Law Enforcement & Tactical Security Instructor</span>
+                        </div>
+                        <div class="faculty-card">
+                            <strong class="faculty-name">Emanuele Silvestri</strong><br>
+                            <span class="faculty-title">Certified Instructor (Italian Aviation & Port Authorities)</span>
+                        </div>
+                        <div class="faculty-card">
+                            <strong class="faculty-name">Haneen Abu Saif</strong><br>
+                            <span class="faculty-title">ICAO-certified AVSEC Instructor (UAE Lead)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Delivery Model -->
+                <div class="delivery-section">
+                    <h3 class="section-title">📍 Delivery Excellence</h3>
+                    <div class="delivery-grid">
+                        <div class="delivery-item">
+                            <h4 class="delivery-title">🇦🇪 UAE-Based Training</h4>
+                            <p>Conducted at client premises or partner facilities across the UAE</p>
+                        </div>
+                        <div class="delivery-item">
+                            <h4 class="delivery-title">📚 Standards-Aligned</h4>
+                            <p>Materials aligned with UAE and international standards (ICAO, ISO, TSA, UNI 10459)</p>
+                        </div>
+                        <div class="delivery-item">
+                            <h4 class="delivery-title">🌐 Flexible Options</h4>
+                            <p>In-person training with digital platform access for enhanced learning</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Contact Page -->
+    <div class="page" id="contact">
+        <section class="contact">
+            <div class="container">
+                <h2 class="section-title">Get In Touch</h2>
+                <div class="contact-form animate-on-scroll">
+                    <h3 class="contact-title red contact-title-spaced">Ready to Transform Your Organization?</h3>
+                    <p class="contact-intro">Contact us today to discuss how our expert consulting services can drive your success across governance, sustainability, healthcare, and security domains.</p>
+                    
+                    <form class="contact-form-wrapper">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="company">Company/Organization</label>
+                            <input type="text" id="company" name="company" placeholder="Enter your company name">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="service">Service Interest</label>
+                            <select id="service" name="service" class="form-select">
+                                <option value="">Select a service area</option>
+                                <option value="governance">Governance Consulting</option>
+                                <option value="sustainability">Sustainability Solutions</option>
+                                <option value="healthcare">Healthcare Excellence</option>
+                                <option value="security">Security & Training</option>
+                                <option value="multiple">Multiple Services</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="5" placeholder="Tell us about your project or requirements" required></textarea>
+                        </div>
+                        
+                        <div class="form-submit-wrapper">
+                <button type="submit" class="cta-button submit-button">Send Message</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="contact-grid">
+                    <div class="contact-card">
+                        <div class="contact-icon">📧</div>
+                        <h4 class="contact-title red">Email Us</h4>
+                        <p>info@corpolgia.com</p>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <div class="contact-icon">📱</div>
+                        <h4 class="contact-title teal">Call Us</h4>
+                        <p>+971 XX XXX XXXX</p>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <div class="contact-icon">📍</div>
+                        <h4 class="contact-title red">Visit Us</h4>
+                        <p>Dubai, UAE</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Back to top button -->
+    <a href="#" class="back-to-top" id="backToTop">↑</a>
+
+
+
+    <script>
+        // Loading screen
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                document.getElementById('loading').classList.add('hidden');
+            }, 1000);
+        });
+
+        // Custom cursor JavaScript removed
+
+        // Floating particles
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 50;
+
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 6 + 's';
+                particle.style.animationDuration = (Math.random() * 3 + 3) + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        createParticles();
+
+        // Page navigation
+        function showPage(pageId) {
+            // Hide all pages
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            // Hide all page sections
+            const pageSections = document.querySelectorAll('.page-section');
+            pageSections.forEach(section => {
+                section.classList.remove('active', 'fade-in');
+                section.classList.add('fade-out');
+            });
+            
+            // Hide recommendation section when not on home page
+            const recommendationSection = document.querySelector('.recommendation-section');
+            if (recommendationSection) {
+                if (pageId === 'home') {
+                    recommendationSection.style.display = 'block';
+                } else {
+                    recommendationSection.style.display = 'none';
+                }
+            }
+
+            // Show selected page or page section
+            const targetElement = document.getElementById(pageId);
+            if (targetElement) {
+                if (targetElement.classList.contains('page')) {
+                    targetElement.classList.add('active');
+                } else if (targetElement.classList.contains('page-section')) {
+                    setTimeout(() => {
+                        targetElement.classList.remove('fade-out');
+                        targetElement.classList.add('active', 'fade-in');
+                    }, 300);
+                }
+            }
+
+            // Close mobile menu if open
+            const navLinks = document.getElementById('nav-links');
+            navLinks.classList.remove('active');
+
+            // Trigger animations on new page
+            setTimeout(() => {
+                animateOnScroll();
+                animateStats();
+            }, 100);
+
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Mobile menu toggle
+        function toggleMenu() {
+            const navLinks = document.getElementById('nav-links');
+            navLinks.classList.toggle('active');
+        }
+
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            const backToTop = document.getElementById('backToTop');
+            
+            if (window.scrollY > 100) {
+                header.classList.add('header-scrolled');
+                backToTop.classList.add('show');
+            } else {
+                header.classList.remove('header-scrolled');
+                backToTop.classList.remove('show');
+            }
+        });
+
+        // Animate elements on scroll
+        function animateOnScroll() {
+            const elements = document.querySelectorAll('.animate-on-scroll');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animated');
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
+
+            elements.forEach(el => {
+                observer.observe(el);
+            });
+        }
+
+        // Animate preview cards
+        function animatePreviewCards() {
+            const cards = document.querySelectorAll('.preview-card');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => {
+                            entry.target.classList.add('animate');
+                        }, index * 200);
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            cards.forEach(card => {
+                observer.observe(card);
+            });
+        }
+
+        // Animate statistics counter
+        function animateStats() {
+            const stats = document.querySelectorAll('.stat-number');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const target = parseInt(entry.target.getAttribute('data-target'));
+                        let current = 0;
+                        const increment = target / 50;
+                        const timer = setInterval(() => {
+                            current += increment;
+                            if (current >= target) {
+                                current = target;
+                                clearInterval(timer);
+                            }
+                            entry.target.textContent = Math.floor(current);
+                        }, 50);
+                    }
+                });
+            }, {
+                threshold: 0.5
+            });
+
+            stats.forEach(stat => {
+                observer.observe(stat);
+            });
+        }
+
+        // Enhanced hover effects
+        document.addEventListener('DOMContentLoaded', function() {
+            // Button hover effects
+            const buttons = document.querySelectorAll('.cta-button');
+            buttons.forEach(button => {
+                button.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-3px) scale(1.05)';
+                    this.style.boxShadow = '0 15px 30px rgba(0,0,0,0.3)';
+                });
+                
+                button.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                    this.style.boxShadow = 'none';
+                });
+            });
+
+            // Initialize animations
+            animateOnScroll();
+            animatePreviewCards();
+            animateStats();
+        });
+
+        // Form submission
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData.entries());
+            
+            // Show success message (you would normally send this to a server)
+            alert('Thank you for your message! We will get back to you soon.');
+            
+            // Reset form
+            this.reset();
+        });
+
+        // Smooth scrolling for back to top
+        document.getElementById('backToTop').addEventListener('click', function(e) {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Add parallax effect to background
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const rate = scrolled * -0.5;
+            document.querySelector('.bg-animation').style.transform = `translateY(${rate}px)`;
+        });
+
+        // Enhanced mobile responsiveness
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 768) {
+                document.getElementById('nav-links').classList.remove('active');
+            }
+        });
+
+        // Add touch support for mobile
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        document.addEventListener('touchstart', e => {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+
+        document.addEventListener('touchend', e => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        });
+
+        function handleSwipe() {
+            const swipeThreshold = 100;
+            const diff = touchStartX - touchEndX;
+            
+            if (Math.abs(diff) > swipeThreshold) {
+                // You could implement page swiping here if needed
+                console.log(diff > 0 ? 'Swiped left' : 'Swiped right');
+            }
+        }
+
+        // Enhanced keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                // Close mobile menu
+                document.getElementById('nav-links').classList.remove('active');
+            }
+        });
+
+        // Consolidated into main DOMContentLoaded listener below
+    </script>
+        <script>
+        class ServiceRecommendationTool {
+            constructor() {
+                this.currentQuestion = 1;
+                this.answers = {};
+                this.servicePackages = {
+                    governmentGovernance: {
+                        title: '🏛️ Government Governance Excellence',
+                        description: 'Comprehensive governance transformation designed specifically for public sector organizations. This package combines regulatory compliance, operational excellence, and citizen service improvements to modernize your government operations.',
+                        timeline: '12-18 months',
+                        investment: 'Government Scale',
+                        services: [
+                            'Public sector compliance framework development',
+                            'Citizen service delivery optimization',
+                            'Digital government transformation',
+                            'Risk management and internal controls',
+                            'Performance measurement systems',
+                            'Stakeholder engagement strategies'
+                        ]
+                    },
+                    healthcareCompliance: {
+                        title: '🏥 Healthcare Compliance & Quality',
+                        description: 'Specialized healthcare compliance solution ensuring your organization meets all regulatory requirements while improving patient outcomes. Perfect for medical facilities seeking comprehensive quality management.',
+                        timeline: '8-14 months',
+                        investment: 'Mid-Market to Enterprise',
+                        services: [
+                            'HIPAA and healthcare compliance audit',
+                            'Quality management system implementation',
+                            'Patient safety protocols development',
+                            'Staff training and certification programs',
+                            'Documentation and record-keeping systems',
+                            'Continuous improvement frameworks'
+                        ]
+                    },
+                    corporateEsg: {
+                        title: '🌱 Corporate ESG Excellence',
+                        description: 'Transform your organization with comprehensive Environmental, Social, and Governance practices. This package helps you build sustainable business practices while meeting stakeholder expectations and regulatory requirements.',
+                        timeline: '10-16 months',
+                        investment: 'Enterprise Scale',
+                        services: [
+                            'ESG strategy development and implementation',
+                            'Sustainability reporting and metrics',
+                            'Carbon footprint assessment and reduction',
+                            'Social impact measurement programs',
+                            'Governance framework enhancement',
+                            'Stakeholder engagement and communication'
+                        ]
+                    },
+                    securityExcellence: {
+                        title: '🔒 Security Excellence Package',
+                        description: 'Comprehensive security transformation for organizations requiring advanced protective measures. This package covers physical security, cybersecurity, and operational security protocols.',
+                        timeline: '6-12 months',
+                        investment: 'Mid-Market to Enterprise',
+                        services: [
+                            'Security risk assessment and mitigation',
+                            'Cybersecurity framework implementation',
+                            'Physical security protocol development',
+                            'Emergency response planning',
+                            'Security training and awareness programs',
+                            'Continuous monitoring and improvement'
+                        ]
+                    },
+                    publicSectorCompliance: {
+                        title: '📋 Public Sector Compliance Transformation',
+                        description: 'Specialized compliance solution for government entities focusing on regulatory adherence and operational transparency. Designed to meet the unique challenges of public sector compliance requirements.',
+                        timeline: '10-15 months',
+                        investment: 'Government Scale',
+                        services: [
+                            'Regulatory compliance framework design',
+                            'Public accountability systems',
+                            'Audit preparation and management',
+                            'Process documentation and standardization',
+                            'Staff compliance training programs',
+                            'Continuous monitoring and reporting'
+                        ]
+                    },
+                    smeSustainability: {
+                        title: '🌿 SME Sustainability Foundation',
+                        description: 'Tailored sustainability solution for small to medium enterprises looking to implement environmental and social responsibility practices. Cost-effective approach to building sustainable business operations.',
+                        timeline: '4-8 months',
+                        investment: 'SME Scale',
+                        services: [
+                            'Sustainability assessment and planning',
+                            'Energy efficiency optimization',
+                            'Waste reduction and recycling programs',
+                            'Employee engagement initiatives',
+                            'Basic ESG reporting framework',
+                            'Community impact programs'
+                        ]
+                    },
+                    enterpriseSecurity: {
+                        title: '🛡️ Enterprise Security Transformation',
+                        description: 'Large-scale security transformation for enterprises requiring comprehensive protection across multiple locations and business units. Advanced security governance and risk management.',
+                        timeline: '12-18 months',
+                        investment: 'Enterprise Scale',
+                        services: [
+                            'Enterprise-wide security architecture',
+                            'Advanced threat detection and response',
+                            'Multi-location security coordination',
+                            'Executive protection protocols',
+                            'Business continuity planning',
+                            'Security governance and oversight'
+                        ]
+                    },
+                    customSolution: {
+                        title: '🎯 Custom Solution Package',
+                        description: 'Bespoke consulting solution tailored to your unique organizational needs. This package combines elements from multiple service areas to create a personalized approach for your specific challenges.',
+                        timeline: '6-15 months',
+                        investment: 'Customized Scale',
+                        services: [
+                            'Comprehensive organizational assessment',
+                            'Custom strategy development',
+                            'Tailored implementation roadmap',
+                            'Specialized training programs',
+                            'Ongoing support and optimization',
+                            'Flexible service delivery model'
+                        ]
+                    }
+                };
+                
+                this.initializeEventListeners();
+                this.updateProgress();
+            }
+
+            initializeEventListeners() {
+                // Use event delegation for better reliability
+                document.addEventListener('click', (e) => {
+                    // Handle option clicks
+                    if (e.target.closest('.option')) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        const option = e.target.closest('.option');
+                        this.selectOption(option);
+                        return;
+                    }
+
+                    // Handle button clicks
+                    const target = e.target;
+                    if (target.id === 'next1' || target.id === 'next2') {
+                        e.preventDefault();
+                        this.nextQuestion();
+                    } else if (target.id === 'back2' || target.id === 'back3') {
+                        e.preventDefault();
+                        this.previousQuestion();
+                    } else if (target.id === 'getRecommendation') {
+                        e.preventDefault();
+                        this.showRecommendation();
+                    } else if (target.id === 'tryAgain') {
+                        e.preventDefault();
+                        this.reset();
+                    } else if (target.id === 'startProject') {
+                        e.preventDefault();
+                        this.startProject();
+                    }
+                });
+
+                // Additional touch event handling for mobile devices
+                document.addEventListener('touchend', (e) => {
+                    if (e.target.closest('.option')) {
+                        e.preventDefault();
+                        const option = e.target.closest('.option');
+                        this.selectOption(option);
+                    }
+                }, { passive: false });
+            }
+
+            selectOption(option) {
+                if (!option) return;
+                
+                const questionContainer = option.closest('.question-container');
+                if (!questionContainer) return;
+                
+                const questionId = questionContainer.id;
+                const questionNumber = questionId.slice(-1);
+
+                // Remove selected class from all options in this question
+                questionContainer.querySelectorAll('.option').forEach(opt => {
+                    opt.classList.remove('selected');
+                    opt.style.transform = '';
+                });
+
+                // Add selected class to clicked option
+                option.classList.add('selected');
+
+                // Store answer
+                this.answers[`question${questionNumber}`] = option.dataset.value;
+                console.log('Selected:', option.dataset.value, 'for question', questionNumber);
+
+                // Enable next button
+                const nextButton = questionContainer.querySelector('.btn-primary');
+                if (nextButton) {
+                    nextButton.disabled = false;
+                    nextButton.style.opacity = '1';
+                }
+
+                // Add visual feedback
+                option.style.transform = 'scale(1.02)';
+                option.style.transition = 'all 0.3s ease';
+                
+                setTimeout(() => {
+                    option.style.transform = 'scale(1)';
+                }, 200);
+            }
+
+            nextQuestion() {
+                if (this.currentQuestion < 3) {
+                    this.hideCurrentQuestion();
+                    this.currentQuestion++;
+                    setTimeout(() => {
+                        this.showCurrentQuestion();
+                        this.updateProgress();
+                    }, 300);
+                }
+            }
+
+            previousQuestion() {
+                if (this.currentQuestion > 1) {
+                    this.hideCurrentQuestion();
+                    this.currentQuestion--;
+                    setTimeout(() => {
+                        this.showCurrentQuestion();
+                        this.updateProgress();
+                    }, 300);
+                }
+            }
+
+            hideCurrentQuestion() {
+                const current = document.getElementById(`question${this.currentQuestion}`);
+                current.style.opacity = '0';
+                current.style.transform = 'translateY(-20px)';
+                setTimeout(() => {
+                    current.classList.remove('active');
+                }, 300);
+            }
+
+            showCurrentQuestion() {
+                const current = document.getElementById(`question${this.currentQuestion}`);
+                current.classList.add('active');
+                setTimeout(() => {
+                    current.style.opacity = '1';
+                    current.style.transform = 'translateY(0)';
+                }, 50);
+            }
+
+            updateProgress() {
+                const progress = (this.currentQuestion / 3) * 100;
+                document.getElementById('progressFill').style.width = `${progress}%`;
+            }
+
+            showRecommendation() {
+                this.hideCurrentQuestion();
+                
+                // Show loading animation
+                setTimeout(() => {
+                    document.getElementById('loading').style.display = 'block';
+                    
+                    // Simulate processing time
+                    setTimeout(() => {
+                        document.getElementById('loading').style.display = 'none';
+                        this.displayRecommendation();
+                    }, 2000);
+                }, 300);
+            }
+
+            displayRecommendation() {
+                const packageKey = this.determineServicePackage();
+                const servicePackage = this.servicePackages[packageKey];
+
+                document.getElementById('recTitle').innerHTML = servicePackage.title;
+                document.getElementById('recDescription').textContent = servicePackage.description;
+
+                // Meta information
+                const metaHtml = `
+                    <div class="meta-item">
+                        <div class="meta-label">Timeline</div>
+                        <div class="meta-value">${servicePackage.timeline}</div>
+                    </div>
+                    <div class="meta-item">
+                        <div class="meta-label">Investment Level</div>
+                        <div class="meta-value">${servicePackage.investment}</div>
+                    </div>
+                `;
+                document.getElementById('recMeta').innerHTML = metaHtml;
+
+                // Services list
+                const servicesHtml = servicePackage.services.map(service => `<li>${service}</li>`).join('');
+                document.getElementById('recServices').innerHTML = servicesHtml;
+
+                // Show recommendation with animation
+                const recommendation = document.getElementById('recommendation');
+                recommendation.classList.add('active');
+                
+                // Animate elements sequentially
+                setTimeout(() => {
+                    recommendation.querySelector('.recommendation-card').style.transform = 'scale(1.02)';
+                    setTimeout(() => {
+                        recommendation.querySelector('.recommendation-card').style.transform = 'scale(1)';
+                    }, 200);
+                }, 300);
+
+                this.updateProgress();
+                document.getElementById('progressFill').style.width = '100%';
+            }
+
+            determineServicePackage() {
+                const { question1: industry, question2: challenge, question3: size } = this.answers;
+
+                // Government sector logic
+                if (industry === 'government') {
+                    if (challenge === 'governance') return 'governmentGovernance';
+                    if (challenge === 'compliance') return 'publicSectorCompliance';
+                    return 'governmentGovernance';
+                }
+
+                // Healthcare sector logic
+                if (industry === 'healthcare') {
+                    if (challenge === 'compliance') return 'healthcareCompliance';
+                    return 'healthcareCompliance';
+                }
+
+                // Corporate sector logic
+                if (industry === 'corporate') {
+                    if (challenge === 'sustainability') {
+                        return size === 'small' ? 'smeSustainability' : 'corporateEsg';
+                    }
+                    if (challenge === 'governance') return 'corporateEsg';
+                    return size === 'small' ? 'smeSustainability' : 'corporateEsg';
+                }
+
+                // Security sector logic
+                if (industry === 'security') {
+                    return size === 'large' ? 'enterpriseSecurity' : 'securityExcellence';
+                }
+
+                // Default fallback
+                return 'customSolution';
+            }
+
+            startProject() {
+                // In a real implementation, this would redirect to a contact form or scheduling page
+                alert('Thank you for your interest! Our team will contact you within 24 hours to discuss your project requirements.');
+            }
+
+            reset() {
+                // Reset all data
+                this.currentQuestion = 1;
+                this.answers = {};
+
+                // Hide recommendation
+                document.getElementById('recommendation').classList.remove('active');
+
+                // Reset all selections
+                document.querySelectorAll('.option.selected').forEach(option => {
+                    option.classList.remove('selected');
+                });
+
+                // Disable next buttons
+                document.querySelectorAll('.btn-primary').forEach(btn => {
+                    if (btn.id !== 'startProject') {
+                        btn.disabled = true;
+                    }
+                });
+
+                // Show first question
+                document.querySelectorAll('.question-container').forEach(q => {
+                    q.classList.remove('active');
+                });
+                
+                setTimeout(() => {
+                    document.getElementById('question1').classList.add('active');
+                    this.updateProgress();
+                }, 300);
+            }
+        }
+
+        // Initialize everything when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            // Add fade-in animation to initial elements
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
+            
+            // Enhanced hover effects for service cards
+            const serviceCards = document.querySelectorAll('.service-card, .preview-card');
+            serviceCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-10px) scale(1.02)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+            
+            // Initialize all components
+            const recommendationTool = new ServiceRecommendationTool();
+            initStatsCounter();
+            initContactForm();
+        });
+        
+        // Statistics Counter Animation
+        function initStatsCounter() {
+            const statNumbers = document.querySelectorAll('.stat-number');
+            const statsSection = document.querySelector('.stats-section');
+            
+            const observerOptions = {
+                threshold: 0.5,
+                rootMargin: '0px 0px -100px 0px'
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateCounters();
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+            
+            if (statsSection) {
+                observer.observe(statsSection);
+            }
+            
+            function animateCounters() {
+                statNumbers.forEach(stat => {
+                    const target = parseInt(stat.getAttribute('data-target'));
+                    const duration = 2000; // 2 seconds
+                    const increment = target / (duration / 16); // 60fps
+                    let current = 0;
+                    
+                    const timer = setInterval(() => {
+                        current += increment;
+                        if (current >= target) {
+                            current = target;
+                            clearInterval(timer);
+                        }
+                        
+                        if (stat.textContent.includes('%')) {
+                            stat.textContent = Math.floor(current) + '%';
+                        } else {
+                            stat.textContent = Math.floor(current);
+                        }
+                    }, 16);
+                });
+            }
+        }
+        
+        // Contact Form Handling
+        function initContactForm() {
+            const contactForm = document.getElementById('contactForm');
+            
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Get form data
+                    const formData = new FormData(contactForm);
+                    const data = Object.fromEntries(formData);
+                    
+                    // Validate form
+                    if (validateForm(data)) {
+                        // Show loading state
+                        const submitBtn = contactForm.querySelector('.form-submit');
+                        const originalText = submitBtn.textContent;
+                        submitBtn.textContent = 'Sending...';
+                        submitBtn.disabled = true;
+                        
+                        // Simulate form submission (replace with actual API call)
+                        setTimeout(() => {
+                            alert('Thank you for your message! We will get back to you within 24 hours.');
+                            contactForm.reset();
+                            submitBtn.textContent = originalText;
+                            submitBtn.disabled = false;
+                        }, 1500);
+                    }
+                });
+            }
+        }
+        
+        function validateForm(data) {
+            const required = ['firstName', 'lastName', 'email', 'phone', 'company'];
+            
+            for (let field of required) {
+                if (!data[field] || data[field].trim() === '') {
+                    alert(`Please fill in the ${field.replace(/([A-Z])/g, ' $1').toLowerCase()} field.`);
+                    return false;
+                }
+            }
+            
+            // Email validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(data.email)) {
+                alert('Please enter a valid email address.');
+                return false;
+            }
+            
+            return true;
+        }
+    </script>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <img src="assets/logo.svg" alt="Corpolgia Consulting">
+        
+                    </div>
+                    <p>Part of La Stella Group - Transforming businesses through expert consulting and strategic solutions.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="LinkedIn">📧</a>
+                        <a href="#" aria-label="Twitter">🐦</a>
+                        <a href="#" aria-label="Facebook">📘</a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#">Governance Consulting</a></li>
+                        <li><a href="#">Sustainability Solutions</a></li>
+                        <li><a href="#">Healthcare Excellence</a></li>
+                        <li><a href="#">Security & Training</a></li>
+                        <li><a href="#">Strategic Consulting</a></li>
+                        <li><a href="#">Digital Transformation</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#team">Our Team</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <div class="contact-info">
+                        <p>📍 UAE & International</p>
+                        <p>📧 info@corpolgia.com</p>
+                        <p>📞 +971 XX XXX XXXX</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-divider"></div>
+                <div class="footer-bottom-content">
+                    <p>&copy; 2025 Corpolgia Consulting - Part of La Stella Group. All rights reserved.</p>
+                    <div class="footer-links">
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Terms of Service</a>
+                        <a href="#">Cookie Policy</a>
+                    </div>
+        </div>
+    </footer>
+
+</body>
+</html>
