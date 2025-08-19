@@ -1295,6 +1295,27 @@
             100% { transform: rotate(360deg); }
         }
 
+        /* Mobile performance optimizations */
+        @media (max-width: 768px) {
+            .bg-animation {
+                display: none !important;
+            }
+            
+            .particles {
+                display: none !important;
+            }
+            
+            * {
+                animation-duration: 0.3s !important;
+                transition-duration: 0.3s !important;
+            }
+            
+            .loader {
+                animation-duration: 0.8s !important;
+                box-shadow: none !important;
+            }
+        }
+
 
 
         /* Animation utilities - consolidated keyframes */
@@ -3332,23 +3353,55 @@
 
 
     <script>
-        // Loading screen
+        // Mobile detection
+        function isMobileDevice() {
+            return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 768;
+        }
+
+        // Loading screen with mobile optimization and fallback
         window.addEventListener('load', function() {
+            const loadingDuration = isMobileDevice() ? 1000 : 2500;
+            const loadingElement = document.getElementById('loading');
+            
+            // Primary timeout
             setTimeout(() => {
-                document.getElementById('loading').classList.add('hidden');
-            }, 2500);
+                if (loadingElement) {
+                    loadingElement.classList.add('hidden');
+                }
+            }, loadingDuration);
+            
+            // Fallback timeout to ensure loading screen disappears
+            setTimeout(() => {
+                if (loadingElement && !loadingElement.classList.contains('hidden')) {
+                    loadingElement.style.display = 'none';
+                }
+            }, loadingDuration + 1000);
         });
+        
+        // Additional fallback for mobile devices
+        if (isMobileDevice()) {
+            document.addEventListener('DOMContentLoaded', function() {
+                setTimeout(() => {
+                    const loadingElement = document.getElementById('loading');
+                    if (loadingElement) {
+                        loadingElement.style.display = 'none';
+                    }
+                }, 3000);
+            });
+        }
 
         // Custom cursor JavaScript removed
 
-        // Advanced particle system
+        // Advanced particle system with mobile optimization
         class ParticleSystem {
             constructor() {
                 this.particles = [];
                 this.connections = [];
                 this.container = document.getElementById('particles');
-                this.particleCount = 40;
-                this.connectionDistance = 120;
+                this.isMobile = isMobileDevice();
+                this.particleCount = this.isMobile ? 8 : 40;
+                this.connectionDistance = this.isMobile ? 80 : 120;
+                this.animationEnabled = !this.isMobile;
                 this.init();
             }
 
@@ -3404,6 +3457,9 @@
             }
 
             updateConnections() {
+                // Skip connections on mobile for performance
+                if (this.isMobile) return;
+                
                 // Clear existing connections
                 this.connections.forEach(connection => {
                     if (connection.parentNode) {
@@ -3442,6 +3498,8 @@
             }
 
             animate() {
+                if (!this.animationEnabled) return;
+                
                 this.updateParticles();
                 this.updateConnections();
                 requestAnimationFrame(() => this.animate());
@@ -3455,10 +3513,13 @@
             }
         }
 
-        // Initialize particle system
+        // Initialize particle system with mobile optimization
         let particleSystem;
         function createParticles() {
-            particleSystem = new ParticleSystem();
+            // Only create particle system if not on mobile or if device can handle it
+            if (!isMobileDevice() || (window.devicePixelRatio <= 2 && window.innerWidth > 480)) {
+                particleSystem = new ParticleSystem();
+            }
         }
 
         // Handle window resize
@@ -3468,7 +3529,10 @@
             }
         });
 
-        createParticles();
+        // Only initialize particles after a delay to prevent loading issues
+        setTimeout(() => {
+            createParticles();
+        }, isMobileDevice() ? 2000 : 500);
 
         // Page navigation
         function showPage(pageId) {
