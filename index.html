@@ -252,6 +252,8 @@
             box-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.4);
             pointer-events: none;
             filter: blur(0.5px);
+            backface-visibility: hidden;
+            transform: translate3d(0, 0, 0);
         }
 
         .particle.solid {
@@ -271,6 +273,8 @@
             pointer-events: none;
             box-shadow: 0 0 2px rgba(255, 255, 255, 0.5);
             filter: blur(0.3px);
+            will-change: transform, opacity;
+            backface-visibility: hidden;
         }
 
         /* Main container */
@@ -383,21 +387,16 @@
             align-items: center;
             justify-content: center;
             text-align: center;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(171, 117, 24, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(212, 175, 55, 0.3) 0%, transparent 50%),
+                linear-gradient(135deg, rgba(171, 117, 24, 0.8) 0%, rgba(26, 26, 26, 0.9) 50%, rgba(171, 117, 24, 0.6) 100%);
             color: white;
             position: relative;
             overflow: hidden;
         }
         
-        .hero-video {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: 1;
-            opacity: 0.7;
-        }
+
         
         .hero::before {
             content: '';
@@ -557,12 +556,14 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
             transition: all 0.5s ease;
             cursor: pointer;
-            transform: translateY(100px);
+            transform: translate3d(0, 100px, 0);
             opacity: 0;
+            will-change: transform, opacity;
+            backface-visibility: hidden;
         }
 
         .preview-card.animate {
-            transform: translateY(0);
+            transform: translate3d(0, 0, 0);
             opacity: 1;
         }
 
@@ -1295,6 +1296,24 @@
             100% { transform: rotate(360deg); }
         }
 
+        /* Reduced motion preferences for accessibility */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+            
+            .particles {
+                display: none !important;
+            }
+            
+            .bg-animation {
+                display: none !important;
+            }
+        }
+
         /* Mobile performance optimizations */
         @media (max-width: 768px) {
             .bg-animation {
@@ -1305,14 +1324,38 @@
                 display: none !important;
             }
             
-            * {
-                animation-duration: 0.3s !important;
+            /* Optimized animation speeds for mobile */
+            .loader {
+                animation-duration: 1.2s !important;
+                box-shadow: 0 0 10px rgba(212, 175, 55, 0.3) !important;
+            }
+            
+            .animate-on-scroll {
+                transition-duration: 0.6s !important;
+            }
+            
+            .page-section {
+                transition-duration: 0.5s !important;
+            }
+            
+            .fadeInUp, .fadeOutDown {
+                animation-duration: 0.6s !important;
+            }
+            
+            .preview-card {
+                transition-duration: 0.4s !important;
+            }
+            
+            .btn, button {
                 transition-duration: 0.3s !important;
             }
             
-            .loader {
+            .nav-links {
+                transition-duration: 0.4s !important;
+            }
+            
+            .hero h1, .hero p {
                 animation-duration: 0.8s !important;
-                box-shadow: none !important;
             }
         }
 
@@ -1322,13 +1365,15 @@
 
         .animate-on-scroll {
             opacity: 0;
-            transform: translateY(50px);
+            transform: translate3d(0, 50px, 0);
             transition: all 0.6s ease;
+            will-change: transform, opacity;
+            backface-visibility: hidden;
         }
 
         .animate-on-scroll.animated {
             opacity: 1;
-            transform: translateY(0);
+            transform: translate3d(0, 0, 0);
         }
 
         /* Our Services Section */
@@ -1594,6 +1639,9 @@
             transition: all 0.5s ease;
             position: relative;
             overflow: hidden;
+            will-change: transform, box-shadow;
+            backface-visibility: hidden;
+            transform: translate3d(0, 0, 0);
         }
 
         .service-card::before {
@@ -1850,6 +1898,9 @@
             cursor: pointer;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             backdrop-filter: blur(10px);
+            will-change: transform, box-shadow;
+            backface-visibility: hidden;
+            transform: translate3d(0, 0, 0);
         }
 
         .btn-primary {
@@ -2253,9 +2304,6 @@
     <!-- Home Page -->
     <div class="page active" id="home">
         <section class="hero">
-            <video class="hero-video" autoplay muted loop>
-                <source src="assets/background.mp4" type="video/mp4">
-            </video>
             <div class="container">
                 <div class="hero-content">
                     <h1>Corpolgia Consulting</h1>
@@ -3402,6 +3450,8 @@
                 this.particleCount = this.isMobile ? 8 : 40;
                 this.connectionDistance = this.isMobile ? 80 : 120;
                 this.animationEnabled = !this.isMobile;
+                this.frameRate = this.isMobile ? 30 : 60; // Limit frame rate on mobile
+                this.lastFrameTime = 0;
                 this.init();
             }
 
@@ -3411,15 +3461,19 @@
             }
 
             createParticles() {
+                // Adjust speeds based on device type
+                const speedMultiplier = this.isMobile ? 0.3 : 1;
+                const rotationMultiplier = this.isMobile ? 0.5 : 1;
+                
                 for (let i = 0; i < this.particleCount; i++) {
                     const particle = {
                         element: document.createElement('div'),
                         x: Math.random() * window.innerWidth,
                         y: Math.random() * window.innerHeight,
-                        vx: (Math.random() - 0.5) * 0.35,
-                        vy: (Math.random() - 0.5) * 0.35,
+                        vx: (Math.random() - 0.5) * 0.35 * speedMultiplier,
+                        vy: (Math.random() - 0.5) * 0.35 * speedMultiplier,
                         rotation: Math.random() * 360,
-                        rotationSpeed: (Math.random() - 0.5) * 2,
+                        rotationSpeed: (Math.random() - 0.5) * 2 * rotationMultiplier,
                         size: Math.random() * 3 + 2,
                         type: Math.random() > 0.5 ? 'solid' : 'hollow'
                     };
@@ -3500,8 +3554,15 @@
             animate() {
                 if (!this.animationEnabled) return;
                 
-                this.updateParticles();
-                this.updateConnections();
+                const now = performance.now();
+                const frameInterval = 1000 / this.frameRate;
+                
+                if (now - this.lastFrameTime >= frameInterval) {
+                    this.updateParticles();
+                    this.updateConnections();
+                    this.lastFrameTime = now;
+                }
+                
                 requestAnimationFrame(() => this.animate());
             }
 
