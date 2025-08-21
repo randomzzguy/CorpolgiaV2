@@ -2266,6 +2266,79 @@
             border: none;
             cursor: pointer;
         }
+
+        /* Scroll Progress Bar */
+        .scroll-progress-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.1);
+            z-index: 9999;
+            backdrop-filter: blur(10px);
+        }
+
+        .scroll-progress-bar {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, 
+                #64748b 0%, 
+                #2e4254 25%, 
+                #222222 50%, 
+                #ab7518 75%, 
+                #f7bd58 100%);
+            background-size: 200% 100%;
+            animation: shimmer 3s ease-in-out infinite;
+            transition: width 0.1s ease-out;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .scroll-progress-bar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                transparent, 
+                rgba(255, 255, 255, 0.6), 
+                transparent);
+            animation: shine 2s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+
+        @keyframes shine {
+            0% {
+                left: -100%;
+            }
+            100% {
+                left: 100%;
+            }
+        }
+
+        /* Mobile optimizations for scroll progress */
+        @media (max-width: 768px) {
+            .scroll-progress-container {
+                height: 3px;
+            }
+            .scroll-progress-bar {
+                animation-duration: 4s;
+            }
+            .scroll-progress-bar::before {
+                animation-duration: 3s;
+            }
+        }
     </style>
 </head>
 <body>
@@ -2280,10 +2353,15 @@
     <!-- Floating particles -->
     <div class="particles" id="particles"></div>
 
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress-container">
+        <div class="scroll-progress-bar" id="scrollProgressBar"></div>
+    </div>
+
     <!-- Header -->
     <header id="header">
         <nav class="container">
-            <div class="logo"><img src="assets/logo.svg" alt="Corpolgia"></div>
+            <div class="logo" onclick="showPage('home')" style="cursor: pointer;"><img src="assets/logo.svg" alt="Corpolgia"></div>
             <ul class="nav-links" id="nav-links">
                 <li><a href="#" onclick="showPage('home')">Home</a></li>
                         <li><a href="#" onclick="showPage('about')">About</a></li>
@@ -3657,13 +3735,24 @@
         window.addEventListener('scroll', function() {
             const header = document.getElementById('header');
             const backToTop = document.getElementById('backToTop');
+            const scrollProgressBar = document.getElementById('scrollProgressBar');
             
+            // Header scroll effect
             if (window.scrollY > 100) {
                 header.classList.add('header-scrolled');
                 backToTop.classList.add('show');
             } else {
                 header.classList.remove('header-scrolled');
                 backToTop.classList.remove('show');
+            }
+            
+            // Scroll progress bar
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrollProgress = (scrollTop / scrollHeight) * 100;
+            
+            if (scrollProgressBar) {
+                scrollProgressBar.style.width = scrollProgress + '%';
             }
         });
 
@@ -4335,31 +4424,31 @@
                     </div>
                     <p>Part of La Stella Group - Transforming businesses through expert consulting and strategic solutions.</p>
                     <div class="social-links">
-                        <a href="#" aria-label="LinkedIn">📧</a>
-                        <a href="#" aria-label="Twitter">🐦</a>
-                        <a href="#" aria-label="Facebook">📘</a>
+                        <a href="#" onclick="showPage('contact-page')" aria-label="Email">📧</a>
+                        <a href="#" onclick="showPage('contact-page')" aria-label="LinkedIn">💼</a>
+                        <a href="#" onclick="showPage('contact-page')" aria-label="Contact">📞</a>
                     </div>
                 </div>
                 
                 <div class="footer-section">
                     <h4>Services</h4>
                     <ul>
-                        <li><a href="#">Governance Consulting</a></li>
-                        <li><a href="#">Sustainability Solutions</a></li>
-                        <li><a href="#">Healthcare Excellence</a></li>
-                        <li><a href="#">Security & Training</a></li>
-                        <li><a href="#">Strategic Consulting</a></li>
-                        <li><a href="#">Digital Transformation</a></li>
+                        <li><a href="#" onclick="showPage('governance')">Governance Consulting</a></li>
+                        <li><a href="#" onclick="showPage('sustainability')">Sustainability Solutions</a></li>
+                        <li><a href="#" onclick="showPage('healthcare')">Healthcare Excellence</a></li>
+                        <li><a href="#" onclick="showPage('security')">Security & Training</a></li>
+                        <li><a href="#" onclick="showPage('governance')">Strategic Consulting</a></li>
+                        <li><a href="#" onclick="showPage('governance')">Digital Transformation</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-section">
                     <h4>Company</h4>
                     <ul>
-                        <li><a href="#about">About Us</a></li>
-                        <li><a href="#team">Our Team</a></li>
-                        <li><a href="#services">Services</a></li>
-                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#" onclick="showPage('about')">About Us</a></li>
+                        <li><a href="#" onclick="showPage('home')">Our Team</a></li>
+                        <li><a href="#" onclick="showPage('home')">Services</a></li>
+                        <li><a href="#" onclick="showPage('contact-page')">Contact</a></li>
                     </ul>
                 </div>
                 
@@ -4378,9 +4467,9 @@
                 <div class="footer-bottom-content">
                     <p>&copy; 2025 Corpolgia Consulting - Part of La Stella Group. All rights reserved.</p>
                     <div class="footer-links">
-                        <a href="#">Privacy Policy</a>
-                        <a href="#">Terms of Service</a>
-                        <a href="#">Cookie Policy</a>
+                        <a href="#" onclick="showPage('contact-page')">Privacy Policy</a>
+                        <a href="#" onclick="showPage('contact-page')">Terms of Service</a>
+                        <a href="#" onclick="showPage('contact-page')">Cookie Policy</a>
                     </div>
         </div>
     </footer>
